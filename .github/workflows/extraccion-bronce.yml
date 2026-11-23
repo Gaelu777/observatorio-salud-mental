@@ -35,6 +35,9 @@ jobs:
       - name: DENUE Colima (oferta de consultorios)
         run: python src/extraer_denue.py
 
+      - name: Censo 2020 ITER Colima (poblacion)
+        run: python src/extraer_censo.py
+
       - name: Defunciones registradas INEGI (serie histórica)
         run: python src/extraer_defunciones.py
 

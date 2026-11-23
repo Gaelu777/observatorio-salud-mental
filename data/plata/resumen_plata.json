@@ -1,0 +1,24 @@
+{
+  "defunciones": {
+    "bronce": 37136,
+    "plata": 37136,
+    "cuarentena": 0,
+    "celdas_con_ruido_corregidas": 40712,
+    "oc2_sin_perdida": true
+  },
+  "denue": {
+    "bronce": 1649,
+    "plata": 1649,
+    "cuarentena": 0,
+    "celdas_con_ruido_corregidas": 1651,
+    "oc2_sin_perdida": true
+  },
+  "censo2020": {
+    "bronce": 1259,
+    "plata": 10,
+    "cuarentena": 0,
+    "fuera_de_alcance_no_municipal": 1249,
+    "celdas_con_ruido_corregidas": 951,
+    "oc2_sin_perdida": true
+  }
+}
