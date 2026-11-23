@@ -3,3 +3,4 @@ fecha,id,tipo,fase_inyeccion,fase_remocion,tiempo_correccion_min,defecto_origen,
 2026-11-23,D2,70-Datos,Codigo,Pruebas,5,,2018-2019 traen tabuladores pegados a los valores; el filtro por entidad 06 devolvia 0 registros
 2026-11-23,D3,60-Verificacion,Codigo,Pruebas,3,D2,El extractor registraba en el manifiesto anios con 0 registros sin fallar; ahora lanza error
 2026-11-23,D4,40-Asignacion,Codigo,Revision,2,,bytes_origen se leia despues de borrar el directorio temporal
+2026-11-23,D5,80-Funcion,Codigo,Revision,5,,Algunos zips listan la carpeta diccionario_de_datos/ como entrada; se guardaba un archivo vacio

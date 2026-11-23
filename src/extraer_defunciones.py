@@ -52,7 +52,8 @@ def procesar_anio(anio: int) -> str:
             # dtype=str: en Bronce no se interpreta nada (los ceros a la izquierda importan)
             df = pd.read_csv(z.open(interno), dtype=str, encoding="latin-1", keep_default_na=False)
             # Diccionario de datos: se guarda una vez por año como referencia
-            dicc = next((n for n in z.namelist() if n.startswith("diccionario_de_datos/")), None)
+            dicc = next((n for n in z.namelist() if n.startswith("diccionario_de_datos/")
+                         and n.lower().endswith(".csv")), None)
             if dicc:
                 (SALIDA / "diccionarios").mkdir(parents=True, exist_ok=True)
                 (SALIDA / "diccionarios" / Path(dicc).name).write_bytes(z.read(dicc))
