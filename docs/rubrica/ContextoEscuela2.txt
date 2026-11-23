@@ -1,0 +1,17 @@
+📌 Objetivo de la Entrega E2:
+Integrar una fuente de datos avanzada al observatorio, garantizar la trazabilidad completa de registros e incorporar la declaración de ética y legalidad.
+Ponderación: 20% de la Unidad 4.
+
+📦 Entregables en su repositorio (Tag 'e2'):
+1. Fuente Especializada Integrada (Elegir al menos una):
+• Geoespacial: DENUE (INEGI), OpenStreetMap o Marco Geoestadístico mediante GeoPandas y visualización cartográfica.
+• Redes Sociales: Métricas agregadas de APIs oficiales (YouTube Data API, Reddit, Mastodon). Cero datos personales.
+• API Avanzada: Consumo con autenticación OAuth 2.0, GraphQL o webhooks.
+2. Declaración de Ética y Legalidad (docs/etica-datos.md):
+• Términos de uso, análisis de robots.txt, licencias de datos, mitigación de sesgos y privacidad.
+3. Linaje y Trazabilidad de Datos:
+• Cada registro en la Capa Oro debe ser rastreable hasta su origen en la Capa Bronce y su fecha de ingesta.
+4. Ficha de entrega (docs/E2/ENTREGA.md) y relatoría de etapa (docs/relatoria-E2.md).
+
+🚀 Instrucciones de Entrega:
+Generen el tag 'e2' en su repositorio y registren el enlace en el formulario oficial.

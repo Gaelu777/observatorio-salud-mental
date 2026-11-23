@@ -1,0 +1,25 @@
+📌 Objetivo de la Entrega E0:
+Definir la pregunta central de su observatorio, validar el problema con un actor real del sector económico seleccionado, inicializar su repositorio en GitHub y dejar corriendo la máquina de captura en la capa Bronce.
+
+📦 Entregables en su repositorio (Tag 'e0'):
+1. Propuesta del Observatorio (docs/E0/propuesta.md, 3 a 5 páginas):
+• Ficha del observatorio: Sector, región, pregunta detonadora y cliente potencial.
+• Entrevista de campo (mínimo 15 min): 5 preguntas realizadas a alguien del sector y sus aprendizajes.
+• Las 3 preguntas analíticas: Variable a pronosticar (E1), factores a experimentar (E2) y grupos multivariados a comparar (E3).
+• Plan de recopilación de datos: Al menos 2 fuentes con análisis ético y legal (robots.txt y términos de uso).
+
+2. Máquina de captura en funcionamiento (Capa Bronce):
+• Extractor ético ejecutándose de forma automática con GitHub Actions.
+• Serie histórica inicial descargada en datos crudos con al menos 36 periodos.
+
+3. Sistema de Calidad inicial (PSP):
+• Archivos de registro abiertos: calidad/tiempo-<nombre>.csv y calidad/defectos-<nombre>.csv por integrante.
+• 3 objetivos de calidad medibles definidos.
+
+4. Ficha de entrega técnica (docs/E0/ENTREGA.md).
+
+🚀 Instrucciones de Entrega:
+1. Creen el tag 'e0' en su repositorio de GitHub antes del lunes 9 de noviembre a las 23:59 hrs.
+2. Agreguen a los 3 profesores como colaboradores del repositorio.
+3. Registren el enlace en el formulario oficial del proyecto integrador.
+4. Marquen como entregada esta tarea pegando el enlace a su repositorio de GitHub.

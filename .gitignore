@@ -1,0 +1,19 @@
+# Credenciales: NUNCA se suben
+.env
+*.env
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Descargas temporales (los zips originales no se versionan; su hash queda en el manifiesto)
+*.zip
+tmp/
+
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,51 @@
+# Máquina de captura (capa Bronce).
+# Corre el día 5 de cada mes y también se puede lanzar a mano (workflow_dispatch).
+# Los extractores son idempotentes: si el archivo de origen no cambió (mismo
+# SHA-256 en el manifiesto) no se vuelve a ingerir, así que no se generan
+# commits vacíos ni duplicados.
+name: Extraccion Bronce
+
+on:
+  schedule:
+    - cron: "0 12 5 * *"   # 12:00 UTC = 06:00 hora de Colima
+  workflow_dispatch:
+
+permissions:
+  contents: write   # necesario para hacer commit de los datos nuevos
+
+concurrency:
+  group: extraccion-bronce
+  cancel-in-progress: false
+
+jobs:
+  extraer:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Instalar dependencias de extracción
+        run: pip install -r requirements-bronce.txt
+
+      - name: DENUE Colima (oferta de consultorios)
+        run: python src/extraer_denue.py
+
+      - name: Defunciones registradas INEGI (serie histórica)
+        run: python src/extraer_defunciones.py
+
+      - name: Guardar datos nuevos
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/bronce
+          if git diff --cached --quiet; then
+            echo "Sin datos nuevos."
+          else
+            git commit -m "bronce: ingesta automatica $(date -u +%Y-%m-%d)"
+            git push
+          fi

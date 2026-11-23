@@ -1,0 +1,5 @@
+fecha,inicio,fin,interrupcion_min,delta_min,fase,actividad,comentarios
+2026-11-23,10:15,10:50,0,35,Planeacion,Lectura de rubricas E0-E2 y contexto del proyecto,
+2026-11-23,10:50,11:10,0,20,Diseno,Eleccion de fuentes oficiales y verificacion de robots.txt,Se descarta Google Trends por no tener API oficial
+2026-11-23,11:10,11:35,0,25,Codigo,Extractores DENUE y defunciones + workflow de Actions,Sesion con asistente
+2026-11-23,11:35,11:45,0,10,Pruebas,Ejecucion real de extractores y validacion de conteos,

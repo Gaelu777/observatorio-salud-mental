@@ -1,0 +1,20 @@
+📌 Objetivo de la Entrega E1:
+Automatizar el flujo de datos hacia las capas Plata y Oro mediante pipelines de limpieza estadística y una Puerta de Calidad automática con cuarentena de registros inválidos.
+Ponderación: 40% de la Unidad 3.
+
+📦 Entregables en su repositorio (Tag 'e1'):
+1. Pipeline de Limpieza y Preprocesamiento (docs/E1/limpieza.ipynb o scripts en src/):
+• Valores faltantes: diagnóstico del mecanismo (MCAR/MAR/MNAR) e imputación justificada.
+• Detección y tratamiento de atípicos y ruido (IQR, Z-Score robusto o Isolation Forest).
+• Normalización y estandarización de variables continuas (Min-Max y Z-Score).
+• Discretización de datos y jerarquías conceptuales.
+• Reducción de datos (muestreo, agregación o selección de variables).
+2. Integración y Resolución de Conflictos:
+• Fusión de las fuentes heterogéneas resolviendo discrepancias de esquema y tipos.
+3. Puerta de Calidad Automática (Pandera o Great Expectations):
+• Validación estricta de esquemas y rangos antes de pasar a capa Plata.
+• Los registros inválidos deben enviarse a cuarentena con motivo documentado (nunca borrados en silencio).
+4. Ficha técnica de entrega (docs/E1/ENTREGA.md) y relatoría de etapa (docs/relatoria-E1.md).
+
+🚀 Instrucciones de Entrega:
+Generen el tag 'e1' en su repositorio y registren el enlace en el formulario oficial del proyecto

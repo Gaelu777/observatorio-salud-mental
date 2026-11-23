@@ -1,0 +1,10 @@
+# Entorno completo del observatorio (versiones fijadas).
+-r requirements-bronce.txt
+numpy==2.2.6        # cálculo numérico (IQR, Z robusto, normalización)
+pandera==0.36.0     # Puerta de Calidad: esquemas y rangos declarativos sobre DataFrames.
+                    # Se prefiere sobre Great Expectations porque es una librería ligera
+                    # que vive en el mismo código pandas, sin servidor ni "data context".
+geopandas==1.2.0    # E2: datos geoespaciales DENUE y Marco Geoestadístico
+shapely==2.2.0      # geometrías (requerida por geopandas)
+pyogrio==0.13.0     # lectura rápida de shapefiles (motor de geopandas)
+matplotlib==3.10.3  # gráficas y mapas
