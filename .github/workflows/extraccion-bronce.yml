@@ -38,6 +38,9 @@ jobs:
       - name: Censo 2020 ITER Colima (poblacion)
         run: python src/extraer_censo.py
 
+      - name: Marco Geoestadistico 2020 (limites municipales)
+        run: python src/extraer_marcogeo.py
+
       - name: Defunciones registradas INEGI (serie histórica)
         run: python src/extraer_defunciones.py
 
@@ -50,11 +53,17 @@ jobs:
       - name: Capa Oro (preprocesamiento + integracion + linaje)
         run: python src/oro.py
 
+      - name: Geoespacial (DENUE + Marco Geoestadistico)
+        run: python src/geoespacial.py
+
+      - name: Verificacion de linaje Oro -> Bronce
+        run: python src/verificar_linaje.py
+
       - name: Guardar datos nuevos
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data docs/E1/reporte_limpieza.md
+          git add data docs/E1/reporte_limpieza.md docs/E2
           if git diff --cached --quiet; then
             echo "Sin datos nuevos."
           else

@@ -62,7 +62,7 @@ _Pendiente. Escribir 3 a 5 aprendizajes concretos y, para cada uno, si **confirm
 |---|---|
 | Temporada | Trimestre del año (T1–T4); también vacaciones/fiestas de diciembre vs. resto |
 | Sexo | Hombre / Mujer |
-| Grupo de edad | 10–19, 20–29, 30–44, 45–59, 60+ |
+| Grupo de edad | 0–14, 15–24, 25–59, 60+ (cortes compatibles con el Censo 2020 para poder calcular tasas) |
 | Zona | Zona conurbada Colima–Villa de Álvarez vs. resto del estado |
 
 Los datos son observacionales, no un experimento controlado. Se analizarán como diseño factorial (conteos por combinación de niveles) y se declarará que no se puede afirmar causalidad.
@@ -71,7 +71,7 @@ Los datos son observacionales, no un experimento controlado. Se analizarán como
 **¿Qué municipios de Colima tienen mucha necesidad de salud mental y poca oferta de consultorios de psicología?**
 
 - **Unidades:** los 10 municipios del estado.
-- **Variables por municipio:** consultorios de psicología por cada 100 mil habitantes (DENUE + población CONAPO), tasa de suicidio por 100 mil, tasa de defunciones por trastornos mentales, % de consultorios públicos vs. privados, y densidad de consultorios en un radio de 1 km del centro de Colima (competencia directa de la cliente).
+- **Variables por municipio:** consultorios de psicología por cada 100 mil habitantes (DENUE + población del Censo 2020), tasa de suicidio por 100 mil, tasa de defunciones por trastornos mentales, % de consultorios públicos vs. privados, y número de consultorios a 500 m, 1 km y 2 km del centro de Colima (competencia directa de la cliente).
 - **Comparación:** agrupar los municipios (p. ej. "alta necesidad / baja oferta") y comparar los grupos con varias variables a la vez.
 - **Dato inicial:** DENUE registra **117 consultorios de psicología** en el estado; **62** están en el municipio de Colima y 20 en Villa de Álvarez (descarga del 23-nov-2026). La oferta está muy concentrada en la capital.
 
@@ -85,7 +85,8 @@ Solo se usan **fuentes oficiales** y descargas públicas que **no requieren toke
 |---|---|---|---|---|
 | F1 | **INEGI — Estadística de Defunciones Registradas (EDR), datos abiertos** | Registro de cada defunción (sin nombres): causa CIE-10, sexo, edad, municipio de residencia y ocurrencia, mes | ZIP con CSV, anual (2018–2023 disponibles) | E0 (serie ≥36), E1, E2, E3 |
 | F2 | **INEGI — DENUE, descarga masiva Colima** | Establecimientos con actividad SCIAN, coordenadas y municipio | ZIP con CSV, actualización semestral aprox. | E2 (geoespacial), E3 |
-| F3 | **CONAPO — Proyecciones de población** (se incorpora en E1) | Población por municipio, sexo y edad | CSV anual | Calcular tasas por 100 mil habitantes |
+| F3 | **INEGI — Censo de Población y Vivienda 2020, ITER Colima** (se incorporó en E1; CONAPO no tenía descargas que funcionaran) | Población por municipio, sexo y edad | CSV, fijo 2020 | Calcular tasas por 100 mil habitantes |
+| F4 | **INEGI — Marco Geoestadístico 2020, Colima** (E2) | Polígonos de los 10 municipios | Shapefile, fijo 2020 | Mapas y validación espacial |
 
 ### 4.1 Análisis ético y legal
 
@@ -93,7 +94,7 @@ Solo se usan **fuentes oficiales** y descargas públicas que **no requieren toke
 - Permite explícitamente `/contenidos/programas` (ruta de F1).
 - `/contenidos/masiva` (ruta de F2) no está prohibida. Solo se prohíben rutas del catálogo de microdatos (`/catalog/...`, `/metadata/...`) y de registro (`/auth/register/`), que **no** se usan.
 
-**Términos de uso:** la información de INEGI se publica bajo los *Términos de Libre Uso de la Información del INEGI*. Permiten copiar, distribuir y adaptar los datos, incluso con fines comerciales, siempre que **se cite la fuente** y no se dé a entender que INEGI respalda el trabajo. El observatorio cita la fuente en cada archivo derivado. CONAPO publica en datos.gob.mx bajo la Licencia de Libre Uso MX, con la misma condición de atribución.
+**Términos de uso:** la información de INEGI se publica bajo los *Términos de Libre Uso de la Información del INEGI*. Permiten copiar, distribuir y adaptar los datos, incluso con fines comerciales, siempre que **se cite la fuente** y no se dé a entender que INEGI respalda el trabajo. El observatorio cita la fuente en cada archivo derivado. Las cuatro fuentes son de INEGI, así que aplican los mismos términos.
 
 **Privacidad:**
 - F1 no contiene nombres ni identificadores directos; INEGI la publica anonimizada. Aun así, en Colima hay pocos casos por mes en municipios pequeños, así que **los resultados se publican solo agregados** (nunca registros individuales en tablas o gráficas) y se suprimen celdas con menos de 3 casos en cruces muy detallados.

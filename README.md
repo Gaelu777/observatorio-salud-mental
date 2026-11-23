@@ -8,6 +8,7 @@ Proyecto integrador. Observatorio que captura datos públicos oficiales de forma
 |---|---|
 | E0 | [`docs/E0/propuesta.md`](docs/E0/propuesta.md) · [`docs/E0/ENTREGA.md`](docs/E0/ENTREGA.md) |
 | E1 | [`docs/E1/ENTREGA.md`](docs/E1/ENTREGA.md) · [`docs/E1/reporte_limpieza.md`](docs/E1/reporte_limpieza.md) · [`docs/relatoria-E1.md`](docs/relatoria-E1.md) |
+| E2 | [`docs/E2/ENTREGA.md`](docs/E2/ENTREGA.md) · [`docs/etica-datos.md`](docs/etica-datos.md) · [`docs/relatoria-E2.md`](docs/relatoria-E2.md) · mapas en `docs/E2/` |
 
 ## Estructura
 
@@ -19,7 +20,7 @@ data/plata/           datos limpios y validados
 data/oro/             datos listos para análisis
 data/cuarentena/      registros inválidos con motivo
 calidad/              registros PSP por integrante
-.github/workflows/    extracción automática mensual
+.github/workflows/    pipeline automático mensual (Bronce → Plata → Oro → mapas → verificación de linaje)
 ```
 
 ## Fuentes
@@ -27,5 +28,6 @@ calidad/              registros PSP por integrante
 - INEGI, *Estadística de Defunciones Registradas* (datos abiertos).
 - INEGI, *Directorio Estadístico Nacional de Unidades Económicas (DENUE)*.
 - INEGI, *Censo de Población y Vivienda 2020*, Principales resultados por localidad (ITER).
+- INEGI, *Marco Geoestadístico 2020*, Colima.
 
 Información de INEGI usada conforme a sus Términos de Libre Uso. Este proyecto no está respaldado por INEGI.

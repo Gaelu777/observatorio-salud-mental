@@ -6,3 +6,6 @@ fecha,id,tipo,fase_inyeccion,fase_remocion,tiempo_correccion_min,defecto_origen,
 2026-11-23,D5,80-Funcion,Codigo,Revision,5,,Algunos zips listan la carpeta diccionario_de_datos/ como entrada; se guardaba un archivo vacio
 2026-11-23,D6,10-Documentacion,Codigo,Pruebas,5,,Motivo de cuarentena en reglas multi-columna listaba todas las columnas; ahora solo el nombre de la regla
 2026-11-23,D7,20-Sintaxis,Codigo,Pruebas,4,,Edicion automatica con heredoc/sed convirtio el escape \n en salto de linea real (SyntaxError); se corrigio y se verifico con py_compile
+2026-11-23,D8,10-Documentacion,Documentacion,Revision,3,,Registro de tiempo con horas estimadas en vez de medidas; se reconstruyo con las horas de los commits
+2026-11-23,D9,60-Verificacion,Codigo,Pruebas,4,,Verificador de linaje lanzaba excepcion con filas fuera de rango en vez de reportarlas; detectado con linaje corrupto a proposito
+2026-11-23,D10,80-Funcion,Codigo,Pruebas,6,,Etiquetas de municipios y radios encimadas en los mapas; se reubicaron con lineas guia y recuadro de conteos

@@ -17,7 +17,7 @@ import numpy as np
 import pandas as pd
 from scipy.stats import chi2_contingency
 
-from comun import RAIZ
+from comun import RAIZ, leer_manifiesto
 
 PLATA = RAIZ / "data" / "plata"
 ORO = RAIZ / "data" / "oro"
@@ -201,6 +201,17 @@ def linaje(tabla: str, clave: pd.Series, registros: pd.DataFrame) -> pd.DataFram
                          "fecha_ingesta_utc": registros["fecha_ingesta_utc"].values})
 
 
+def linaje_cero(tabla: str, claves: list[str]) -> pd.DataFrame:
+    """Filas de Oro con conteo 0 no tienen registros fuente; su linaje apunta a
+    TODOS los archivos de Bronce de defunciones que se revisaron para concluir
+    que no hubo casos (un cero también es un dato que debe ser trazable)."""
+    edr = [f for f in leer_manifiesto() if f["fuente"] == "INEGI-EDR"]
+    archivos = ";".join(sorted({f["archivo_bronce"] for f in edr}))
+    fecha = max(f["fecha_ingesta_utc"] for f in edr)
+    return pd.DataFrame({"tabla_oro": tabla, "clave_oro": claves, "id_registro": "SIN_REGISTROS",
+                         "archivo_bronce": archivos, "fila_bronce": pd.NA, "fecha_ingesta_utc": fecha})
+
+
 def resumen_linaje(regs: pd.DataFrame, clave: str) -> pd.DataFrame:
     return regs.groupby(clave).agg(n_registros_fuente=("id_registro", "size"),
                                    fecha_ingesta_max=("fecha_ingesta_utc", "max"))
@@ -257,6 +268,11 @@ def series(r: pd.DataFrame) -> tuple[pd.DataFrame, list[pd.DataFrame]]:
     mensual["n_registros_fuente"] = res["n_registros_fuente"].fillna(0).astype(int).values
     mensual["fecha_ingesta_max"] = res["fecha_ingesta_max"].values
     lin.append(linaje("serie_mensual_colima", sm["periodo"], sm))
+    ceros = mensual.loc[mensual["n_registros_fuente"] == 0, "periodo"].tolist()
+    if ceros:
+        lc = linaje_cero("serie_mensual_colima", ceros)
+        lin.append(lc)
+        mensual.loc[mensual["periodo"].isin(ceros), "fecha_ingesta_max"] = lc["fecha_ingesta_utc"].iloc[0]
 
     # Reducción por agregación: mensual -> trimestral
     sm = sm.assign(periodo_t=sm["anio_ocur"].astype(str) + "-T" + sm["trimestre"].astype(str))
@@ -269,6 +285,9 @@ def series(r: pd.DataFrame) -> tuple[pd.DataFrame, list[pd.DataFrame]]:
     trim["n_registros_fuente"] = rt["n_registros_fuente"].fillna(0).astype(int).values
     trim["fecha_ingesta_max"] = rt["fecha_ingesta_max"].values
     lin.append(linaje("serie_trimestral_colima", sm["periodo_t"], sm))
+    ceros_t = trim.loc[trim["n_registros_fuente"] == 0, "periodo"].tolist()
+    if ceros_t:
+        lin.append(linaje_cero("serie_trimestral_colima", ceros_t))
     guardar(mensual, "serie_mensual_colima.csv")
     guardar(trim, "serie_trimestral_colima.csv")
     return mensual, lin
