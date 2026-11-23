@@ -3,7 +3,7 @@
 | Campo | Valor |
 |---|---|
 | Tag | `e0` |
-| Equipo | Gaelu777 · Luis Alejandro Mendoza Peñaloza |
+| Equipo | Gael Alexandro Cortez Sarmienta · Luis Alejandro Mendoza Peñaloza |
 | Región | Estado de Colima (foco: zona centro del municipio de Colima) |
 
 ## Checklist contra la rúbrica
@@ -50,4 +50,4 @@ El linaje (URL, fecha de ingesta, SHA-256 del original y registros) está en `da
 ## Pendientes conocidos
 
 - Hacer la entrevista de campo y llenar la sección 2 de la propuesta.
-- Confirmar el número de profesores colaboradores (la rúbrica dice 3).
+- Profesores colaboradores: se agregan 2 (confirmado por el equipo).

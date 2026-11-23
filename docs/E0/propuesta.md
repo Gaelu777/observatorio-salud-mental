@@ -1,6 +1,6 @@
 # Propuesta del Observatorio de Salud Mental — Colima
 
-**Equipo:** Gaelu777 · Luis Alejandro Mendoza Peñaloza
+**Equipo:** Gael Alexandro Cortez Sarmienta · Luis Alejandro Mendoza Peñaloza
 **Repositorio:** https://github.com/Gaelu777/observatorio-salud-mental
 **Entrega:** E0 (tag `e0`)
 
