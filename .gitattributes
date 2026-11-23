@@ -1,2 +1,4 @@
 * text=auto eol=lf
 *.csv text eol=lf
+# Bronce se guarda byte a byte, sin conversiones de fin de linea
+data/bronce/** -text
