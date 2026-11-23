@@ -1,0 +1,9 @@
+A_motor,B_columnas,C_formato,mean,std,tasa_error
+pyarrow,necesarias,csv,0.2437,0.0312,1.0
+pyarrow,necesarias,parquet,0.2755,0.0446,1.0
+c,necesarias,parquet,0.4514,0.0186,0.0
+c,necesarias,csv,0.4925,0.0262,0.0
+pyarrow,todas,csv,1.2763,0.0483,1.0
+pyarrow,todas,parquet,1.428,0.2101,1.0
+c,todas,parquet,1.8224,0.2263,0.0
+c,todas,csv,2.3356,0.3912,0.0

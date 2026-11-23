@@ -9,3 +9,6 @@ geopandas==1.2.0    # E2: datos geoespaciales DENUE y Marco Geoestadístico
 shapely==2.2.0      # geometrías (requerida por geopandas)
 pyogrio==0.13.0     # lectura rápida de shapefiles (motor de geopandas)
 matplotlib==3.10.3  # gráficas y mapas
+statsmodels==0.14.5 # E2: ANOVA de efectos fijos con interacción y bloque (scipy solo trae ANOVA de un factor);
+                    # E1: Holt-Winters, ARIMA, Dickey-Fuller y Ljung-Box
+pyarrow==22.0.0     # E2: escritura Parquet/Feather y motor de lectura probado en el experimento factorial

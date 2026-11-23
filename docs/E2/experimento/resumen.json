@@ -1,0 +1,36 @@
+{
+  "semilla": 20261123,
+  "replicas": 3,
+  "corridas_2k3": 24,
+  "errores_totales": 12,
+  "efectos_principales_seg": {
+    "A_motor": -0.4696,
+    "B_columnas": -1.3498,
+    "C_formato": -0.0927
+  },
+  "supuestos_2k3": {
+    "shapiro_W": 0.9332,
+    "shapiro_p": 0.115,
+    "levene_p": 0.674
+  },
+  "supuestos_dos_factores": {
+    "shapiro_W": 0.9532,
+    "shapiro_p": 0.4776,
+    "levene_p": 0.6092
+  },
+  "ganadora": {
+    "A_motor": "c",
+    "B_columnas": "necesarias",
+    "C_formato": "parquet"
+  },
+  "media_predicha_ganadora_seg": 0.4514,
+  "tasa_error_por_motor": {
+    "c": 0.0,
+    "pyarrow": 1.0
+  },
+  "shapiro_p_log_2k3": 0.0742,
+  "confirmacion_media_seg": 0.5427,
+  "confirmacion_de_seg": 0.0116,
+  "configuracion_actual_media_seg": 2.3356,
+  "mejora_pct_vs_actual": 76.8
+}

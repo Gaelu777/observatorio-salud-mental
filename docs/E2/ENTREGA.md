@@ -14,6 +14,7 @@
 | 2 | Declaración de ética y legalidad (términos, robots.txt, licencias, sesgos, privacidad) | `docs/etica-datos.md` | Copia fechada de robots.txt en `docs/E0/evidencia/` |
 | 3 | Linaje: cada registro de Oro rastreable hasta Bronce y su fecha de ingesta | `data/oro/linaje_oro.csv`, columnas de linaje en cada tabla, `src/verificar_linaje.py` | `docs/E2/verificacion_linaje.md` (resultado OK) |
 | 4 | Ficha de entrega y relatoría | este archivo, `docs/relatoria-E2.md` | — |
+| 5 | **Análisis Estadístico:** experimento factorial 2³ con aleatorización, 3 réplicas y bloque; ANOVA de dos vías (2 × 3) con interacción; matrices 2⁴ y 2⁴⁻¹ con alias; supuestos y corrida de confirmación | `src/experimento_factorial.py` | [`docs/E2/experimento.md`](experimento.md), datos y gráficas en `docs/E2/experimento/` |
 
 ## 1. Fuente geoespacial
 
