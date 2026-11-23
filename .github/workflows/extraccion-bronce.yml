@@ -1,9 +1,9 @@
-# Máquina de captura (capa Bronce).
+# Máquina de captura (Bronce) + pipeline de limpieza (Plata) y análisis (Oro).
 # Corre el día 5 de cada mes y también se puede lanzar a mano (workflow_dispatch).
 # Los extractores son idempotentes: si el archivo de origen no cambió (mismo
 # SHA-256 en el manifiesto) no se vuelve a ingerir, así que no se generan
 # commits vacíos ni duplicados.
-name: Extraccion Bronce
+name: Pipeline Bronce-Plata-Oro
 
 on:
   schedule:
@@ -29,8 +29,8 @@ jobs:
           python-version: "3.12"
           cache: pip
 
-      - name: Instalar dependencias de extracción
-        run: pip install -r requirements-bronce.txt
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
 
       - name: DENUE Colima (oferta de consultorios)
         run: python src/extraer_denue.py
@@ -41,14 +41,23 @@ jobs:
       - name: Defunciones registradas INEGI (serie histórica)
         run: python src/extraer_defunciones.py
 
+      - name: Prueba de la Puerta de Calidad
+        run: python tests/test_puerta_calidad.py
+
+      - name: Capa Plata (Puerta de Calidad + cuarentena)
+        run: python src/plata.py
+
+      - name: Capa Oro (preprocesamiento + integracion + linaje)
+        run: python src/oro.py
+
       - name: Guardar datos nuevos
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/bronce
+          git add data docs/E1/reporte_limpieza.md
           if git diff --cached --quiet; then
             echo "Sin datos nuevos."
           else
-            git commit -m "bronce: ingesta automatica $(date -u +%Y-%m-%d)"
+            git commit -m "datos: corrida automatica $(date -u +%Y-%m-%d)"
             git push
           fi

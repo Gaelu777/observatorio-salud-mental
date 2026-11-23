@@ -51,7 +51,7 @@ def main() -> None:
 
     SALIDA.mkdir(parents=True, exist_ok=True)
     archivo = SALIDA / f"denue_colima_scian621_{date.today():%Y%m%d}.csv"
-    df.to_csv(archivo, index=False, encoding="utf-8")
+    df.to_csv(archivo, index=False, encoding="utf-8", lineterminator="\n")
     registrar({
         "fuente": "INEGI-DENUE",
         "url": URL,

@@ -3,3 +3,7 @@ fecha,inicio,fin,interrupcion_min,delta_min,fase,actividad,comentarios
 2026-11-23,10:50,11:10,0,20,Diseno,Eleccion de fuentes oficiales y verificacion de robots.txt,Se descarta Google Trends por no tener API oficial
 2026-11-23,11:10,11:35,0,25,Codigo,Extractores DENUE y defunciones + workflow de Actions,Sesion con asistente
 2026-11-23,11:35,11:45,0,10,Pruebas,Ejecucion real de extractores y validacion de conteos,
+2026-11-23,11:50,12:10,0,20,Diseno,Diseno de capas Plata/Oro y esquemas Pandera,Sesion con asistente
+2026-11-23,12:10,12:50,0,40,Codigo,Plata (puerta de calidad) y Oro (faltantes, atipicos, integracion, linaje),Sesion con asistente
+2026-11-23,12:50,13:05,0,15,Pruebas,Prueba con registros inyectados y verificacion de cifras,
+2026-11-23,13:05,13:15,0,10,Documentacion,ENTREGA E1 y relatoria,

@@ -7,11 +7,13 @@ Proyecto integrador. Observatorio que captura datos públicos oficiales de forma
 | Entrega | Documentos |
 |---|---|
 | E0 | [`docs/E0/propuesta.md`](docs/E0/propuesta.md) · [`docs/E0/ENTREGA.md`](docs/E0/ENTREGA.md) |
+| E1 | [`docs/E1/ENTREGA.md`](docs/E1/ENTREGA.md) · [`docs/E1/reporte_limpieza.md`](docs/E1/reporte_limpieza.md) · [`docs/relatoria-E1.md`](docs/relatoria-E1.md) |
 
 ## Estructura
 
 ```
-src/                  extractores y pipelines
+src/                  extractores (extraer_*.py) y pipelines (plata.py, oro.py)
+tests/                prueba de la Puerta de Calidad
 data/bronce/          datos crudos de INEGI + manifiesto.csv (linaje)
 data/plata/           datos limpios y validados
 data/oro/             datos listos para análisis
@@ -24,5 +26,6 @@ calidad/              registros PSP por integrante
 
 - INEGI, *Estadística de Defunciones Registradas* (datos abiertos).
 - INEGI, *Directorio Estadístico Nacional de Unidades Económicas (DENUE)*.
+- INEGI, *Censo de Población y Vivienda 2020*, Principales resultados por localidad (ITER).
 
 Información de INEGI usada conforme a sus Términos de Libre Uso. Este proyecto no está respaldado por INEGI.

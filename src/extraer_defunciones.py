@@ -67,7 +67,7 @@ def procesar_anio(anio: int) -> str:
             raise RuntimeError(f"{anio}: 0 registros de Colima; revisar formato del archivo")
         SALIDA.mkdir(parents=True, exist_ok=True)
         archivo = SALIDA / f"defunciones_colima_registradas_{anio}.csv"
-        colima.to_csv(archivo, index=False, encoding="utf-8")
+        colima.to_csv(archivo, index=False, encoding="utf-8", lineterminator="\n")
 
         registrar({
             "fuente": "INEGI-EDR",

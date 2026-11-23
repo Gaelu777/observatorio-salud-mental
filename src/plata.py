@@ -102,8 +102,8 @@ def puerta_calidad(df: pd.DataFrame, esquema: pa.DataFrameSchema, nombre: str) -
 def guardar(df: pd.DataFrame, cuarentena: pd.DataFrame, nombre: str) -> None:
     PLATA.mkdir(parents=True, exist_ok=True)
     CUARENTENA.mkdir(parents=True, exist_ok=True)
-    df.to_csv(PLATA / f"{nombre}.csv", index=False, encoding="utf-8")
-    cuarentena.to_csv(CUARENTENA / f"{nombre}_cuarentena.csv", index=False, encoding="utf-8")
+    df.to_csv(PLATA / f"{nombre}.csv", index=False, encoding="utf-8", lineterminator="\n")
+    cuarentena.to_csv(CUARENTENA / f"{nombre}_cuarentena.csv", index=False, encoding="utf-8", lineterminator="\n")
 
 
 # --------------------------------------------------------------------------- defunciones

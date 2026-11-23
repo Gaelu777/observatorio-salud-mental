@@ -1,0 +1,11 @@
+cve_mun,nom_mun,pobtot,suicidios_2018_2023,trastornos_mentales_2018_2023,consultorios_psic_privados,consultorios_psic_publicos,consultorios_psic,consultorios_por_100k,tasa_suicidio_anual_100k,tasa_trast_mental_anual_100k,zona,consultorios_por_100k_minmax,consultorios_por_100k_z,tasa_suicidio_anual_100k_minmax,tasa_suicidio_anual_100k_z,tasa_trast_mental_anual_100k_minmax,tasa_trast_mental_anual_100k_z,pobtot_minmax,pobtot_z,oferta_nivel,necesidad_nivel,n_registros_fuente,fecha_ingesta_max
+001,Armería,27626,17,7,0,0,0,0.0,10.26,4.22,resto,0.0,-0.9566,0.8651,0.8667,0.2492,-0.6535,0.1187,-0.6339,baja,alta,25,2026-11-23T17:17:24Z
+002,Colima,157048,84,44,59,3,62,39.48,8.91,4.67,metropolitana,1.0,2.562,0.7513,0.4625,0.3215,-0.4089,0.8167,1.1686,alta,alta,191,2026-11-23T17:17:24Z
+003,Comala,21661,13,10,3,0,3,13.85,10.0,7.69,metropolitana,0.3508,0.2778,0.8432,0.7888,0.8071,1.2331,0.0865,-0.7169,alta,alta,27,2026-11-23T17:17:24Z
+004,Coquimatlán,20837,6,7,1,0,1,4.8,4.8,5.6,metropolitana,0.1216,-0.5288,0.4047,-0.7679,0.4711,0.0968,0.0821,-0.7284,baja,baja,15,2026-11-23T17:17:24Z
+005,Cuauhtémoc,31267,13,12,3,0,3,9.59,6.93,6.4,metropolitana,0.2429,-0.1019,0.5843,-0.1302,0.5997,0.5317,0.1383,-0.5832,media,media,29,2026-11-23T17:17:24Z
+006,Ixtlahuacán,5623,4,3,0,0,0,0.0,11.86,8.89,resto,0.0,-0.9566,1.0,1.3456,1.0,1.8856,0.0,-0.9403,baja,alta,8,2026-11-23T17:17:24Z
+007,Manzanillo,191031,78,61,19,1,20,10.47,6.81,5.32,resto,0.2652,-0.0234,0.5742,-0.1661,0.426,-0.0555,1.0,1.6419,alta,media,160,2026-11-23T17:17:24Z
+008,Minatitlán,10231,0,3,0,1,1,9.77,0.0,4.89,resto,0.2475,-0.0858,0.0,-2.2048,0.3569,-0.2893,0.0249,-0.8761,media,baja,5,2026-11-23T17:17:24Z
+009,Tecomán,116305,54,27,7,0,7,6.02,7.74,3.87,resto,0.1525,-0.42,0.6526,0.1123,0.1929,-0.8438,0.597,0.6012,media,media,89,2026-11-23T17:17:24Z
+010,Villa de Álvarez,149762,57,24,20,0,20,13.35,6.34,2.67,metropolitana,0.3381,0.2332,0.5346,-0.3068,0.0,-1.4963,0.7774,1.0671,alta,baja,102,2026-11-23T17:17:24Z

@@ -1,6 +1,7 @@
 # Entorno completo del observatorio (versiones fijadas).
 -r requirements-bronce.txt
 numpy==2.2.6        # cálculo numérico (IQR, Z robusto, normalización)
+scipy==1.18.1       # prueba chi-cuadrada para diagnosticar el mecanismo de faltantes
 pandera==0.36.0     # Puerta de Calidad: esquemas y rangos declarativos sobre DataFrames.
                     # Se prefiere sobre Great Expectations porque es una librería ligera
                     # que vive en el mismo código pandas, sin servidor ni "data context".
