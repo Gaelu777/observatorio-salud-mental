@@ -15,6 +15,7 @@
 | 3 | Linaje: cada registro de Oro rastreable hasta Bronce y su fecha de ingesta | `data/oro/linaje_oro.csv`, columnas de linaje en cada tabla, `src/verificar_linaje.py` | `docs/E2/verificacion_linaje.md` (resultado OK) |
 | 4 | Ficha de entrega y relatoría | este archivo, `docs/relatoria-E2.md` | — |
 | 5 | **Análisis Estadístico:** experimento factorial 2³ con aleatorización, 3 réplicas y bloque; ANOVA de dos vías (2 × 3) con interacción; matrices 2⁴ y 2⁴⁻¹ con alias; supuestos y corrida de confirmación | `src/experimento_factorial.py` | [`docs/E2/experimento.md`](experimento.md), datos y gráficas en `docs/E2/experimento/` |
+| 6 | **Calidad:** evaluación ISO/IEC 25010 (producto) e ISO/IEC 25012 (datos de la capa Oro) con métricas medidas; antecedentes normativos 9126 / SQuaRE / ISO 9001 | — | [`docs/E2/evaluacion-iso.md`](evaluacion-iso.md) |
 
 ## 1. Fuente geoespacial
 
