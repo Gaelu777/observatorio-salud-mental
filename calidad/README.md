@@ -20,6 +20,6 @@ Tipos estándar PSP: 10-Documentacion, 20-Sintaxis, 30-Construccion, 40-Asignaci
 
 | # | Objetivo | Métrica | Meta | Cómo se mide |
 |---|---|---|---|---|
-| OC1 | Captura confiable | % de ejecuciones del workflow `Extraccion Bronce` terminadas con éxito | ≥ 95 % | Historial de GitHub Actions |
+| OC1 | Captura confiable | % de ejecuciones diarias del workflow `Pipeline Bronce-Plata-Oro` terminadas con éxito | ≥ 95 % | `data/bitacora/capturas.csv` (una fila por corrida, exitosa o fallida) + historial de GitHub Actions |
 | OC2 | Cero pérdida silenciosa | `registros_bronce = registros_plata + registros_cuarentena` en cada corrida | 100 % de corridas (diferencia = 0) | Chequeo automático del pipeline de Plata (E1) |
 | OC3 | Defectos detectados temprano | % de defectos removidos en Revisión o Pruebas (antes de llegar a `main`/tag) | ≥ 80 % | Columna `fase_remocion` de `defectos-*.csv` |

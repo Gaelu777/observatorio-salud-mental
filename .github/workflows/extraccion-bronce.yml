@@ -1,27 +1,44 @@
 # Máquina de captura (Bronce) + pipeline de limpieza (Plata) y análisis (Oro).
-# Corre el día 5 de cada mes y también se puede lanzar a mano (workflow_dispatch).
+#
+# Dos frecuencias:
+#   - DIARIA (13:00 UTC): DENUE, la fuente que cambia (altas/bajas de consultorios),
+#     y luego Plata -> Oro -> mapas -> linaje.
+#   - MENSUAL (día 5, 12:00 UTC) y a mano: además descarga Censo 2020, Marco
+#     Geoestadístico y Defunciones. Son ediciones anuales/fijas; bajarlas a diario
+#     solo saturaría al INEGI sin traer nada nuevo.
+#
+# Cada corrida, exitosa o fallida, agrega una fila a data/bitacora/capturas.csv.
+# Esa bitácora es la evidencia para medir fiabilidad y disponibilidad (MTBF, MTTR).
+#
 # Los extractores son idempotentes: si el archivo de origen no cambió (mismo
-# SHA-256 en el manifiesto) no se vuelve a ingerir, así que no se generan
-# commits vacíos ni duplicados.
+# SHA-256 en el manifiesto) no se vuelve a ingerir.
 name: Pipeline Bronce-Plata-Oro
 
 on:
   schedule:
-    - cron: "0 12 5 * *"   # 12:00 UTC = 06:00 hora de Colima
+    - cron: "0 13 * * *"   # diaria: 13:00 UTC = 07:00 hora de Colima
+    - cron: "0 12 5 * *"   # mensual completa: día 5, 12:00 UTC
   workflow_dispatch:
 
 permissions:
-  contents: write   # necesario para hacer commit de los datos nuevos
+  contents: write   # necesario para hacer commit de los datos y la bitácora
 
 concurrency:
   group: extraccion-bronce
   cancel-in-progress: false
+
+env:
+  # true en la corrida mensual o manual: se descargan todas las fuentes.
+  COMPLETA: ${{ github.event_name == 'workflow_dispatch' || github.event.schedule == '0 12 5 * *' }}
 
 jobs:
   extraer:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
+      - name: Marcar inicio de la corrida
+        run: echo "INICIO_UTC=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
+
       - uses: actions/checkout@v4
 
       - uses: actions/setup-python@v5
@@ -32,16 +49,19 @@ jobs:
       - name: Instalar dependencias
         run: pip install -r requirements.txt
 
-      - name: DENUE Colima (oferta de consultorios)
+      - name: DENUE Colima (oferta de consultorios) — diaria
         run: python src/extraer_denue.py
 
-      - name: Censo 2020 ITER Colima (poblacion)
+      - name: Censo 2020 ITER Colima (poblacion) — mensual
+        if: env.COMPLETA == 'true'
         run: python src/extraer_censo.py
 
-      - name: Marco Geoestadistico 2020 (limites municipales)
+      - name: Marco Geoestadistico 2020 (limites municipales) — mensual
+        if: env.COMPLETA == 'true'
         run: python src/extraer_marcogeo.py
 
-      - name: Defunciones registradas INEGI (serie histórica)
+      - name: Defunciones registradas INEGI (serie histórica) — mensual
+        if: env.COMPLETA == 'true'
         run: python src/extraer_defunciones.py
 
       - name: Prueba de la Puerta de Calidad
@@ -59,14 +79,32 @@ jobs:
       - name: Verificacion de linaje Oro -> Bronce
         run: python src/verificar_linaje.py
 
-      - name: Guardar datos nuevos
+      # Siempre corre, aunque un paso anterior haya fallado.
+      - name: Registrar en bitacora y guardar
+        if: always()
+        env:
+          ESTADO: ${{ job.status }}
         run: |
+          mkdir -p data/bitacora
+          B=data/bitacora/capturas.csv
+          if [ ! -f "$B" ]; then
+            echo "run_id,intento,evento,tipo,inicio_utc,fin_utc,duracion_seg,estado" > "$B"
+          fi
+          FIN=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          DUR=$(( $(date -u -d "$FIN" +%s) - $(date -u -d "$INICIO_UTC" +%s) ))
+          if [ "$COMPLETA" = "true" ]; then TIPO=completa; else TIPO=diaria; fi
+          echo "${{ github.run_id }},${{ github.run_attempt }},${{ github.event_name }},$TIPO,$INICIO_UTC,$FIN,$DUR,$ESTADO" >> "$B"
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data docs/E1/reporte_limpieza.md docs/E2
-          if git diff --cached --quiet; then
-            echo "Sin datos nuevos."
+          if [ "$ESTADO" = "success" ]; then
+            git add data docs/E1/reporte_limpieza.md docs/E2
+            MSG="datos: corrida automatica $(date -u +%Y-%m-%d)"
           else
-            git commit -m "datos: corrida automatica $(date -u +%Y-%m-%d)"
-            git push
+            # Si falló, solo se guarda la bitácora: no se suben datos a medio procesar.
+            git add "$B"
+            MSG="bitacora: corrida fallida $(date -u +%Y-%m-%d)"
           fi
+          git commit -m "$MSG"
+          git pull --rebase --autostash
+          git push
