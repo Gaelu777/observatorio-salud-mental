@@ -10,7 +10,7 @@ Proyecto integrador. Observatorio que captura datos públicos oficiales de forma
 | E1 | [`docs/E1/ENTREGA.md`](docs/E1/ENTREGA.md) · [`docs/E1/reporte_limpieza.md`](docs/E1/reporte_limpieza.md) · [`docs/E1/pronostico.md`](docs/E1/pronostico.md) · [`docs/relatoria-E1.md`](docs/relatoria-E1.md) · [`data/oro/DICCIONARIO.md`](data/oro/DICCIONARIO.md) |
 | Calidad | [`docs/plan-sqa.md`](docs/plan-sqa.md) · [`docs/requerimientos.md`](docs/requerimientos.md) · [`calidad/`](calidad/) · CI en [`.github/workflows/ci.yml`](.github/workflows/ci.yml) |
 | E2 | [`docs/E2/ENTREGA.md`](docs/E2/ENTREGA.md) · [`docs/etica-datos.md`](docs/etica-datos.md) · [`docs/relatoria-E2.md`](docs/relatoria-E2.md) · mapas en `docs/E2/` |
-| E3 (en curso) | [`docs/E3/multivariado.md`](docs/E3/multivariado.md) · [`docs/E3/tendencias.md`](docs/E3/tendencias.md) · [`docs/E3/datasheet.md`](docs/E3/datasheet.md) |
+| E3 (en curso) | [`docs/E3/ENTREGA.md`](docs/E3/ENTREGA.md) · [`docs/E3/multivariado.md`](docs/E3/multivariado.md) · [`docs/E3/modelos-proceso.md`](docs/E3/modelos-proceso.md) · [`docs/E3/tendencias.md`](docs/E3/tendencias.md) · [`docs/E3/datasheet.md`](docs/E3/datasheet.md) |
 
 ## Cómo ejecutarlo
 
