@@ -1,0 +1,7 @@
+modelo,clave,AIC_entrenamiento,MAE,RMSE,MAPE_%
+SES,SES,285.53,1.623,1.951,59.6
+Holt,Holt,285.63,2.023,2.443,75.6
+Holt-Winters,Holt-Winters,302.1,1.851,2.29,61.3
+"ARIMA(0, 0, 0)",ARIMA,284.1,1.436,1.686,49.0
+"ARIMA(p=[3, 9],0,0)",ARIMA-PACF,277.88,1.63,2.061,58.2
+Referencia: media histórica,referencia,,1.436,1.686,49.0

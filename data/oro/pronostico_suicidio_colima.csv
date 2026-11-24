@@ -1,0 +1,13 @@
+periodo,modelo,pronostico,limite_inferior_95,limite_superior_95,fuente_entrada,meses_entrenamiento
+2024-01,"ARIMA(0, 0, 0)",4.54,0.0,9.21,data/oro/serie_mensual_colima.csv,72
+2024-02,"ARIMA(0, 0, 0)",4.54,0.0,9.21,data/oro/serie_mensual_colima.csv,72
+2024-03,"ARIMA(0, 0, 0)",4.54,0.0,9.21,data/oro/serie_mensual_colima.csv,72
+2024-04,"ARIMA(0, 0, 0)",4.54,0.0,9.21,data/oro/serie_mensual_colima.csv,72
+2024-05,"ARIMA(0, 0, 0)",4.54,0.0,9.21,data/oro/serie_mensual_colima.csv,72
+2024-06,"ARIMA(0, 0, 0)",4.54,0.0,9.21,data/oro/serie_mensual_colima.csv,72
+2024-07,"ARIMA(0, 0, 0)",4.54,0.0,9.21,data/oro/serie_mensual_colima.csv,72
+2024-08,"ARIMA(0, 0, 0)",4.54,0.0,9.21,data/oro/serie_mensual_colima.csv,72
+2024-09,"ARIMA(0, 0, 0)",4.54,0.0,9.21,data/oro/serie_mensual_colima.csv,72
+2024-10,"ARIMA(0, 0, 0)",4.54,0.0,9.21,data/oro/serie_mensual_colima.csv,72
+2024-11,"ARIMA(0, 0, 0)",4.54,0.0,9.21,data/oro/serie_mensual_colima.csv,72
+2024-12,"ARIMA(0, 0, 0)",4.54,0.0,9.21,data/oro/serie_mensual_colima.csv,72
