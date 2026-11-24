@@ -1,0 +1,13 @@
+seg,mem_mb,mem_trabajo_mb,errores,detalle,tarea,condicion
+3.338,157.3,45.5,0,c89d36503552a17557fb3046fb305fd2c480e72d95d1ca3cb634e0dcc4dc8eec,limpieza,antes
+2.52,154.6,43.1,0,c89d36503552a17557fb3046fb305fd2c480e72d95d1ca3cb634e0dcc4dc8eec,limpieza,despues
+3.39,157.6,45.8,0,c89d36503552a17557fb3046fb305fd2c480e72d95d1ca3cb634e0dcc4dc8eec,limpieza,antes
+2.714,155.0,43.4,0,c89d36503552a17557fb3046fb305fd2c480e72d95d1ca3cb634e0dcc4dc8eec,limpieza,despues
+3.841,157.3,46.0,0,c89d36503552a17557fb3046fb305fd2c480e72d95d1ca3cb634e0dcc4dc8eec,limpieza,antes
+2.514,155.1,43.3,0,c89d36503552a17557fb3046fb305fd2c480e72d95d1ca3cb634e0dcc4dc8eec,limpieza,despues
+3.275,156.6,45.0,0,c89d36503552a17557fb3046fb305fd2c480e72d95d1ca3cb634e0dcc4dc8eec,limpieza,antes
+2.489,155.1,43.4,0,c89d36503552a17557fb3046fb305fd2c480e72d95d1ca3cb634e0dcc4dc8eec,limpieza,despues
+3.294,157.3,45.5,0,c89d36503552a17557fb3046fb305fd2c480e72d95d1ca3cb634e0dcc4dc8eec,limpieza,antes
+2.465,155.2,43.4,0,c89d36503552a17557fb3046fb305fd2c480e72d95d1ca3cb634e0dcc4dc8eec,limpieza,despues
+74.105,118.7,6.8,0,"6 descargas, 192.6 MB",captura,antes
+30.23,115.4,3.5,0,"0 descargas, 0.0 MB",captura,despues

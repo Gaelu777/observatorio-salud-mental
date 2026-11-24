@@ -182,3 +182,47 @@ def test_descarga_guarda_binario(monkeypatch, tmp_path):
     monkeypatch.setattr(comun.requests, "get", lambda *a, **k: _RespuestaFalsa("application/zip"))
     destino = comun.descargar("https://ejemplo/x.zip", tmp_path / "x.zip")
     assert destino.read_bytes() == b"datos"
+
+
+# --------------------------------------------------------------------- huella HTTP (optimización E3)
+class _RespuestaParcial(_RespuestaFalsa):
+    def __init__(self, status=206, etag='"abc"', total="1000", tipo="application/zip"):
+        super().__init__(tipo)
+        self.status_code = status
+        self.headers.update({"ETag": etag, "Content-Range": f"bytes 0-0/{total}", "Last-Modified": "x"})
+
+
+def test_huella_igual_evita_descarga(monkeypatch, tmp_path):
+    monkeypatch.setattr(comun, "HUELLAS", tmp_path / "huellas.csv")
+    monkeypatch.setattr(comun.requests, "get", lambda *a, **k: _RespuestaParcial())
+    igual, h = comun.sin_cambios("https://ejemplo/x.zip")
+    assert not igual, "sin huella previa siempre se descarga"
+    comun.guardar_huella("https://ejemplo/x.zip", h)
+    assert comun.sin_cambios("https://ejemplo/x.zip")[0], "misma huella: no se descarga"
+
+
+def test_huella_distinta_o_sin_soporte_descarga(monkeypatch, tmp_path):
+    monkeypatch.setattr(comun, "HUELLAS", tmp_path / "huellas.csv")
+    monkeypatch.setattr(comun.requests, "get", lambda *a, **k: _RespuestaParcial())
+    comun.guardar_huella("u", comun.huella_remota("u"))
+    monkeypatch.setattr(comun.requests, "get", lambda *a, **k: _RespuestaParcial(total="2000"))
+    assert not comun.sin_cambios("u")[0], "cambió el tamaño: se descarga"
+    monkeypatch.setattr(comun.requests, "get", lambda *a, **k: _RespuestaParcial(status=200, tipo="text/html"))
+    assert comun.huella_remota("u") is None
+    assert not comun.sin_cambios("u")[0], "servidor sin soporte: ante la duda se descarga"
+
+
+def test_huella_otro_servidor_mismo_archivo(monkeypatch, tmp_path):
+    """El INEGI sirve copias desde varios servidores: otro ETag y una fecha que difiere
+    por segundos, pero el mismo tamaño. Debe contar como el mismo archivo."""
+    monkeypatch.setattr(comun, "HUELLAS", tmp_path / "huellas.csv")
+    a = _RespuestaParcial(etag='"servidor1"')
+    a.headers["Last-Modified"] = "Mon, 10 Nov 2025 12:00:15 GMT"
+    b = _RespuestaParcial(etag='"servidor2"')
+    b.headers["Last-Modified"] = "Mon, 10 Nov 2025 12:00:25 GMT"
+    monkeypatch.setattr(comun.requests, "get", lambda *x, **k: a)
+    comun.guardar_huella("u", comun.huella_remota("u"))
+    monkeypatch.setattr(comun.requests, "get", lambda *x, **k: b)
+    assert comun.sin_cambios("u")[0]
+    b.headers["Last-Modified"] = "Tue, 21 Jul 2026 22:00:03 GMT"  # publicación nueva
+    assert not comun.sin_cambios("u")[0]

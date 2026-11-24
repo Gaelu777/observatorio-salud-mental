@@ -1,0 +1,39 @@
+{
+  "bronce_sin_cambios": true,
+  "captura": {
+    "n_por_condicion": 1,
+    "seg_antes": 74.105,
+    "seg_despues": 30.23,
+    "seg_de_antes": null,
+    "seg_de_despues": null,
+    "mejora_tiempo_pct": 59.2,
+    "mem_mb_antes": 118.7,
+    "mem_mb_despues": 115.4,
+    "mejora_memoria_pct": 2.8,
+    "mem_trabajo_mb_antes": 6.8,
+    "mem_trabajo_mb_despues": 3.5,
+    "errores_antes": 0,
+    "errores_despues": 0,
+    "detalle_antes": "6 descargas, 192.6 MB",
+    "detalle_despues": "0 descargas, 0.0 MB"
+  },
+  "limpieza": {
+    "n_por_condicion": 5,
+    "seg_antes": 3.428,
+    "seg_despues": 2.54,
+    "seg_de_antes": 0.235,
+    "seg_de_despues": 0.099,
+    "mejora_tiempo_pct": 25.9,
+    "mem_mb_antes": 157.2,
+    "mem_mb_despues": 155.0,
+    "mejora_memoria_pct": 1.4,
+    "mem_trabajo_mb_antes": 45.6,
+    "mem_trabajo_mb_despues": 43.3,
+    "errores_antes": 0,
+    "errores_despues": 0,
+    "detalle_antes": "c89d36503552a17557fb3046fb305fd2c480e72d95d1ca3cb634e0dcc4dc8eec",
+    "detalle_despues": "c89d36503552a17557fb3046fb305fd2c480e72d95d1ca3cb634e0dcc4dc8eec",
+    "salida_identica": true,
+    "welch_p_tiempo": 0.0004024711621986489
+  }
+}

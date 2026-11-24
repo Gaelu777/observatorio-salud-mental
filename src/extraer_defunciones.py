@@ -15,6 +15,7 @@ Uso:
 """
 from __future__ import annotations
 
+import os
 import sys
 import tempfile
 import time
@@ -24,17 +25,22 @@ from pathlib import Path
 
 import pandas as pd
 
-from comun import BRONCE, PAUSA_SEG, ahora_utc, descargar, registrar, sha256, ultimo_hash
+from comun import BRONCE, PAUSA_SEG, ahora_utc, descargar, guardar_huella, registrar, sha256, sin_cambios, ultimo_hash
 
 URL = ("https://www.inegi.org.mx/contenidos/programas/edr/datosabiertos/defunciones/"
        "{anio}/conjunto_de_datos_defunciones_registradas_{anio}_csv.zip")
 ENTIDAD_COLIMA = "06"
 ANIO_INICIAL = 2018  # primer año disponible en esta ruta de datos abiertos
+# Solo para medir el "antes" de la optimización (src/optimizacion.py): 1 = descargar siempre
+SIN_HUELLA = os.environ.get("OPTIMIZACION_E3") == "0"
 SALIDA = BRONCE / "inegi_defunciones"
 
 
 def procesar_anio(anio: int) -> str:
     url = URL.format(anio=anio)
+    igual, huella = sin_cambios(url)
+    if igual and not SIN_HUELLA:
+        return f"{anio}: sin cambios (mismo ETag y tamaño), no se descarga"
     with tempfile.TemporaryDirectory() as tmp:
         zip_path = Path(tmp) / f"def_{anio}.zip"
         try:
@@ -43,6 +49,7 @@ def procesar_anio(anio: int) -> str:
             return f"{anio}: aún no publicado, se omite"
         h = sha256(zip_path)
         if ultimo_hash(url) == h:
+            guardar_huella(url, huella)
             return f"{anio}: sin cambios (hash igual), se omite"
 
         with zipfile.ZipFile(zip_path) as z:
@@ -78,6 +85,7 @@ def procesar_anio(anio: int) -> str:
             "archivo_bronce": archivo.relative_to(BRONCE.parent.parent).as_posix(),
             "registros": len(colima),
         })
+        guardar_huella(url, huella)
         return f"{anio}: {len(colima)} registros de Colima guardados"
 
 

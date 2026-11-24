@@ -19,6 +19,7 @@ Uso:  python src/plata.py
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 import numpy as np
@@ -46,12 +47,23 @@ def ultimos_archivos(fuente: str) -> list[dict]:
     return list(por_url.values())
 
 
+# Optimización E3: OPTIMIZACION_E3=0 reproduce el comportamiento anterior SOLO para
+# medir el "antes" en src/optimizacion.py. En operación normal siempre está activa.
+OPTIMIZADO = os.environ.get("OPTIMIZACION_E3", "1") != "0"
+
+
 def leer_bronce(entrada: dict, prefijo: str, **kw) -> pd.DataFrame:
     ruta = RAIZ / entrada["archivo_bronce"]
     df = pd.read_csv(ruta, dtype=str, keep_default_na=False, **kw)
     df.insert(0, "fila_bronce", np.arange(2, len(df) + 2))  # fila 1 = encabezado
     df.insert(0, "archivo_bronce", entrada["archivo_bronce"])
-    df.insert(0, "id_registro", [f"{prefijo}:{Path(ruta).stem}:{i}" for i in df["fila_bronce"]])
+    if OPTIMIZADO:
+        # El nombre del archivo se calcula UNA vez (antes: una vez por fila, 37 mil veces;
+        # el perfilador mostró que era el 24 % del tiempo de Plata).
+        base = f"{prefijo}:{Path(ruta).stem}:"
+        df.insert(0, "id_registro", base + df["fila_bronce"].astype(str))
+    else:
+        df.insert(0, "id_registro", [f"{prefijo}:{Path(ruta).stem}:{i}" for i in df["fila_bronce"]])
     df["fecha_ingesta_utc"] = entrada["fecha_ingesta_utc"]
     df["sha256_origen"] = entrada["sha256_origen"]
     return df
@@ -161,8 +173,12 @@ def decodificar_edad(codigo: pd.Series) -> pd.Series:
 
 def plata_defunciones() -> dict:
     partes = []
+    # Optimización E3 (factor B ganador del experimento de E2): leer solo las columnas
+    # que se usan (14 de 59-74). `presunto` es el nombre viejo de `tipo_defun` (2018-2021).
+    necesarias = set(COLS_DEF) | {"presunto"}
+    usecols = (lambda c: c in necesarias) if OPTIMIZADO else None
     for e in sorted(ultimos_archivos("INEGI-EDR"), key=lambda e: e["archivo_bronce"]):
-        df = leer_bronce(e, "EDR")
+        df = leer_bronce(e, "EDR", usecols=usecols)
         # Conflicto de esquema: 2018-2021 llaman `presunto` a lo que 2022+ llama `tipo_defun`
         # (mismo catálogo: 1 accidente, 2 homicidio, 3 suicidio, 4 natural/enfermedad, 5 otra).
         if "tipo_defun" not in df.columns and "presunto" in df.columns:

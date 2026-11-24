@@ -24,7 +24,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from comun import BRONCE, ahora_utc, descargar, registrar, sha256, ultimo_hash
+from comun import BRONCE, ahora_utc, descargar, guardar_huella, registrar, sha256, sin_cambios, ultimo_hash
 
 URL = "https://www.inegi.org.mx/contenidos/masiva/denue/denue_06_csv.zip"
 SALIDA = BRONCE / "inegi_denue"
@@ -33,12 +33,17 @@ PREFIJO_SCIAN = "621"
 
 
 def main() -> None:
+    igual, huella = sin_cambios(URL)
+    if igual:
+        print("DENUE: sin cambios (mismo ETag y tamaño), no se descarga")
+        return
     with tempfile.TemporaryDirectory() as tmp:
         zip_path = Path(tmp) / "denue_06.zip"
         descargar(URL, zip_path)
         h = sha256(zip_path)
         tam = zip_path.stat().st_size
         if ultimo_hash(URL) == h:
+            guardar_huella(URL, huella)
             print("DENUE: sin cambios (hash igual), se omite")
             return
         with zipfile.ZipFile(zip_path) as z:
@@ -61,6 +66,7 @@ def main() -> None:
         "archivo_bronce": archivo.relative_to(BRONCE.parent.parent).as_posix(),
         "registros": len(df),
     })
+    guardar_huella(URL, huella)
     psic = df["codigo_act"].isin(["621331", "621332"]).sum()
     print(f"DENUE: {len(df)} establecimientos SCIAN 621 ({psic} de psicología) guardados")
 
