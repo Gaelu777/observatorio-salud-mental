@@ -1,5 +1,5 @@
 {
-  "entrada": "data\\oro\\serie_mensual_colima.csv",
+  "entrada": "data/oro/serie_mensual_colima.csv",
   "prueba": "ene-dic 2023 (12 meses)",
   "caracterizacion": {
     "n": 72,
