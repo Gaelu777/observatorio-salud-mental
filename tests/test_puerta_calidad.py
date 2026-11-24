@@ -21,7 +21,7 @@ def registro_valido(i: int) -> dict:
             "fecha_ingesta_utc": "2026-01-01T00:00:00Z", "sha256_origen": "x"}
 
 
-def main() -> None:
+def test_puerta_calidad_cuarentena() -> None:
     casos = {  # fila -> (cambio, texto esperado en el motivo)
         1: ({"causa_def": "ZZZ"}, "causa_def"),
         2: ({"edad_anios": 150}, "edad_anios"),
@@ -50,4 +50,4 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    test_puerta_calidad_cuarentena()

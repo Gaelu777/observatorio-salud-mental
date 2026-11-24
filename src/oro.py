@@ -155,7 +155,7 @@ def imputar(r: pd.DataFrame) -> pd.DataFrame:
     r["anio_imputado"] = r["anio_ocur"].isna()
     r["anio_ocur"] = r["anio_ocur"].fillna(r["anio_regis"])
     r["mes_imputado"] = r["mes_ocurr"].isna()
-    for grupo, sub in r.groupby("grupo_causa"):
+    for _grupo, sub in r.groupby("grupo_causa"):
         conocidos = sub["mes_ocurr"].dropna().astype(int)
         probs = conocidos.value_counts(normalize=True).sort_index()
         idx = sub.index[sub["mes_ocurr"].isna()]

@@ -11,4 +11,4 @@ pyogrio==0.13.0     # lectura rápida de shapefiles (motor de geopandas)
 matplotlib==3.10.3  # gráficas y mapas
 statsmodels==0.14.5 # E2: ANOVA de efectos fijos con interacción y bloque (scipy solo trae ANOVA de un factor);
                     # E1: Holt-Winters, ARIMA, Dickey-Fuller y Ljung-Box
-pyarrow==22.0.0     # E2: escritura Parquet/Feather y motor de lectura probado en el experimento factorial
+pyarrow==23.0.1     # (corrige CVE-2026-25087, detectada por pip-audit) E2: escritura Parquet/Feather y motor de lectura probado en el experimento factorial

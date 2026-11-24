@@ -22,13 +22,12 @@ import matplotlib
 
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
-import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 from matplotlib.colors import LinearSegmentedColormap  # noqa: E402
 from matplotlib.lines import Line2D  # noqa: E402
 from shapely.geometry import Point, box  # noqa: E402
 
-from comun import RAIZ, leer_manifiesto  # noqa: E402
+from comun import RAIZ  # noqa: E402
 
 PLATA = RAIZ / "data" / "plata"
 ORO = RAIZ / "data" / "oro"
@@ -101,7 +100,7 @@ def mapa_oferta_necesidad(mun: gpd.GeoDataFrame, ind: pd.DataFrame, pts: gpd.Geo
     fig, axes = plt.subplots(1, 2, figsize=(13, 5.6), facecolor=SUPERFICIE)
     paneles = [("consultorios_por_100k", AZUL, "Oferta: consultorios de psicología\npor cada 100 mil habitantes (DENUE 2026)"),
                ("tasa_suicidio_anual_100k", NARANJA, "Necesidad: suicidios por año\npor cada 100 mil habitantes (2018–2023)")]
-    for ax, (col, rampa, titulo) in zip(axes, paneles):
+    for ax, (col, rampa, titulo) in zip(axes, paneles, strict=False):
         cmap = LinearSegmentedColormap.from_list(col, rampa)
         g.plot(column=col, cmap=cmap, ax=ax, edgecolor=SUPERFICIE, linewidth=1.5, legend=True,
                legend_kwds={"shrink": 0.6, "orientation": "horizontal", "pad": 0.02})
@@ -125,7 +124,7 @@ def mapa_centro(mun: gpd.GeoDataFrame, pts: gpd.GeoDataFrame, comp: pd.DataFrame
     centro = gpd.GeoSeries([Point(CENTRO)], crs=4326).to_crs(CRS_METRICO).iloc[0]
     fig, ax = plt.subplots(figsize=(8.5, 8.5), facecolor=SUPERFICIE)
     mun.boundary.plot(ax=ax, color=TENUE, linewidth=1)
-    for r, estilo in zip(RADIOS_M, [(0, (1, 2)), (0, (4, 3)), "solid"]):
+    for r, estilo in zip(RADIOS_M, [(0, (1, 2)), (0, (4, 3)), "solid"], strict=False):
         gpd.GeoSeries([centro.buffer(r)]).boundary.plot(ax=ax, color=TINTA_2, linewidth=1, linestyle=estilo)
     conteos = "\n".join(
         f"{'Punteado' if r == 500 else 'Guiones' if r == 1000 else 'Continuo'} · {r if r < 1000 else r // 1000}"

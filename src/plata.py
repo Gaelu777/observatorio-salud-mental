@@ -26,7 +26,7 @@ import pandas as pd
 import pandera.pandas as pa
 from pandera.errors import SchemaErrors
 
-from comun import BRONCE, RAIZ, leer_manifiesto
+from comun import RAIZ, leer_manifiesto
 
 PLATA = RAIZ / "data" / "plata"
 CUARENTENA = RAIZ / "data" / "cuarentena"
@@ -86,7 +86,7 @@ def puerta_calidad(df: pd.DataFrame, esquema: pa.DataFrameSchema, nombre: str) -
         fc = err.failure_cases
         # Errores sin índice (p. ej. falta una columna) son estructurales: se detiene todo.
         if fc["index"].isna().any():
-            raise RuntimeError(f"[{nombre}] error estructural de esquema:\n{fc[fc['index'].isna()]}")
+            raise RuntimeError(f"[{nombre}] error estructural de esquema:\n{fc[fc['index'].isna()]}") from err
         # Reglas de fila completa (varias columnas): el motivo es solo el nombre de la regla
         de_fila = fc["schema_context"] == "DataFrameSchema"
         fc = fc.assign(motivo=np.where(

@@ -17,3 +17,9 @@ tmp/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Calidad
+.coverage
+htmlcov/
+.pytest_cache/
+.ruff_cache/

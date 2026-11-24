@@ -47,15 +47,15 @@ def main() -> None:
             continue
         d = pd.read_csv(ruta, dtype=str)
         claves = clave_fn(d)
-        l = lin[lin["tabla_oro"] == tabla]
-        sin = set(claves) - set(l["clave_oro"])
-        conteo = l[l["id_registro"] != "SIN_REGISTROS"].groupby("clave_oro").size()
+        lt = lin[lin["tabla_oro"] == tabla]
+        sin = set(claves) - set(lt["clave_oro"])
+        conteo = lt[lt["id_registro"] != "SIN_REGISTROS"].groupby("clave_oro").size()
         dif = (pd.to_numeric(d["n_registros_fuente"]).values != conteo.reindex(claves).fillna(0).values).sum()
         if sin:
             errores.append(f"{tabla}: {len(sin)} filas sin linaje (p. ej. {sorted(sin)[:3]})")
         if dif:
             errores.append(f"{tabla}: {dif} filas con n_registros_fuente distinto al linaje")
-        filas_md.append(f"| `{tabla}` | {len(d)} | {len(d) - len(sin)} | {len(l)} | {'OK' if not sin and not dif else 'FALLA'} |")
+        filas_md.append(f"| `{tabla}` | {len(d)} | {len(d) - len(sin)} | {len(lt)} | {'OK' if not sin and not dif else 'FALLA'} |")
 
     # 2: existencia en Plata
     reales = lin[lin["id_registro"] != "SIN_REGISTROS"].drop_duplicates("id_registro")

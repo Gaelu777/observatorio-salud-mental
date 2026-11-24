@@ -262,7 +262,7 @@ def main() -> None:
         "efectos_principales_seg": efectos,
         "supuestos_2k3": sup3,
         "supuestos_dos_factores": sup2,
-        "ganadora": dict(zip(NIVELES.keys(), ganadora)),
+        "ganadora": dict(zip(NIVELES.keys(), ganadora, strict=False)),
         "media_predicha_ganadora_seg": float(validas.iloc[0]["mean"]),
         "tasa_error_por_motor": d3.groupby("A_motor")["error"].mean().to_dict(),
         "shapiro_p_log_2k3": round(float(sw_log.pvalue), 4),

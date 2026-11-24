@@ -1,0 +1,7 @@
+# Herramientas de calidad (CI y desarrollo local). No las necesita la captura.
+-r requirements.txt
+ruff==0.17.6        # linter: estilo PEP 8 y errores comunes; reemplaza flake8+isort y es mucho más rápido
+pytest==9.2.0       # pruebas automáticas
+pytest-cov==7.1.0   # cobertura de pruebas (el Sello TDL pide >= 60 %)
+pip-audit==2.10.1   # busca vulnerabilidades conocidas (CVE) en las dependencias fijadas
+streamlit==1.67.0   # tablero del observatorio (tablero/app.py)

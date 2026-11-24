@@ -1,0 +1,26 @@
+# Configuración de herramientas de calidad (no es un paquete instalable).
+
+[tool.ruff]
+line-length = 160  # el código tiene f-strings largos de reportes Markdown
+target-version = "py311"
+src = ["src"]
+
+[tool.ruff.lint]
+# E/W: estilo PEP 8 · F: errores reales (variables sin usar, imports rotos) · B: bugs comunes
+select = ["E", "W", "F", "B"]
+# E402: los scripts agregan src/ al path antes de importar y matplotlib.use("Agg") va antes de pyplot
+ignore = ["E402"]
+
+[tool.ruff.lint.per-file-ignores]
+# oro.py arma el reporte de limpieza con tablas Markdown en una sola línea cada una
+"src/oro.py" = ["E501"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+addopts = "-q"
+# avisos de convergencia de statsmodels en la rejilla de ARIMA (esperados)
+filterwarnings = ["ignore::UserWarning:statsmodels", "ignore:Maximum Likelihood:Warning"]
+
+[tool.coverage.run]
+source = ["src"]

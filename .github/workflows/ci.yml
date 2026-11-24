@@ -1,0 +1,47 @@
+# Integración continua: en cada push y pull request se revisa que nada se rompa.
+#   1. ruff         -> estilo y errores comunes de Python
+#   2. pytest + cov -> pruebas, incluida la Puerta de Calidad y la reproducibilidad
+#                      completa Bronce -> Oro; falla si la cobertura baja de 60 %
+#   3. pip-audit    -> vulnerabilidades conocidas en las dependencias
+#   4. gitleaks     -> secretos (tokens, llaves) en TODO el historial de git
+# Si cualquiera falla, el commit queda marcado en rojo: "un cambio que rompe algo no entra".
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Instalar dependencias
+        run: pip install -r requirements-dev.txt
+      - name: Linter (ruff)
+        run: ruff check src tests tablero
+      - name: Pruebas, Puerta de Calidad y cobertura
+        run: pytest --cov --cov-report=term --cov-fail-under=60
+      - name: Vulnerabilidades en dependencias (pip-audit)
+        run: pip-audit -r requirements.txt --progress-spinner off
+
+  secretos:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # historial completo: un secreto borrado sigue en commits viejos
+      - name: Buscar secretos (gitleaks)
+        uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
