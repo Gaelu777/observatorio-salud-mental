@@ -1,0 +1,9 @@
+,CP1,CP2,CP3,CP4
+pct_sin_afiliacion,0.018,0.004,0.931,-0.097
+escolaridad_prom,0.894,-0.005,-0.177,-0.096
+pct_60ymas,-0.188,0.61,-0.289,-0.454
+pct_condicion_mental,-0.309,0.446,0.24,-0.481
+pct_viv_internet,0.863,0.163,0.063,-0.254
+pct_desocupacion,0.026,0.669,0.134,0.577
+pct_hogares_jefa,0.098,0.75,-0.052,0.193
+log_dist_psicologo,-0.85,-0.03,-0.127,-0.045

@@ -1,0 +1,9 @@
+,pct_sin_afiliacion,escolaridad_prom,pct_60ymas,pct_condicion_mental,pct_viv_internet,pct_desocupacion,pct_hogares_jefa,log_dist_psicologo
+pct_sin_afiliacion,1.0,-0.118,-0.077,0.053,0.115,0.038,-0.027,-0.042
+escolaridad_prom,-0.118,1.0,-0.098,-0.228,0.713,-0.024,0.052,-0.649
+pct_60ymas,-0.077,-0.098,1.0,0.187,0.047,0.172,0.229,0.218
+pct_condicion_mental,0.053,-0.228,0.187,1.0,-0.14,0.105,0.15,0.11
+pct_viv_internet,0.115,0.713,0.047,-0.14,1.0,0.006,0.152,-0.617
+pct_desocupacion,0.038,-0.024,0.172,0.105,0.006,1.0,0.335,-0.099
+pct_hogares_jefa,-0.027,0.052,0.229,0.15,0.152,0.335,1.0,-0.049
+log_dist_psicologo,-0.042,-0.649,0.218,0.11,-0.617,-0.099,-0.049,1.0

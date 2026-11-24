@@ -79,6 +79,15 @@ jobs:
       - name: Verificacion de linaje Oro -> Bronce
         run: python src/verificar_linaje.py
 
+      - name: Pronostico (modelo ganador por error en datos de prueba)
+        run: python src/pronostico.py
+
+      - name: Analisis multivariado por localidad (E3)
+        run: python src/multivariado.py
+
+      - name: Diccionario de datos de Oro
+        run: python src/diccionario_oro.py
+
       # Siempre corre, aunque un paso anterior haya fallado.
       - name: Registrar en bitacora y guardar
         if: always()
@@ -98,7 +107,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [ "$ESTADO" = "success" ]; then
-            git add data docs/E1/reporte_limpieza.md docs/E2
+            git add data docs/E1/reporte_limpieza.md docs/E1/pronostico docs/E2 docs/E3/multivariado
             MSG="datos: corrida automatica $(date -u +%Y-%m-%d)"
           else
             # Si falló, solo se guarda la bitácora: no se suben datos a medio procesar.

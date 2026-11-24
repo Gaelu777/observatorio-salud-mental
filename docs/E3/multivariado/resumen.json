@@ -1,0 +1,531 @@
+{
+  "unidad": "localidad del Censo 2020 con >= 500 habitantes",
+  "n": 65,
+  "p": 8,
+  "variables": [
+    "pct_sin_afiliacion",
+    "escolaridad_prom",
+    "pct_60ymas",
+    "pct_condicion_mental",
+    "pct_viv_internet",
+    "pct_desocupacion",
+    "pct_hogares_jefa",
+    "log_dist_psicologo"
+  ],
+  "descriptivos": {
+    "pct_sin_afiliacion": {
+      "count": 65.0,
+      "mean": 15.559,
+      "std": 6.514,
+      "min": 0.871,
+      "25%": 10.933,
+      "50%": 15.595,
+      "75%": 18.271,
+      "max": 37.66
+    },
+    "escolaridad_prom": {
+      "count": 65.0,
+      "mean": 8.192,
+      "std": 1.131,
+      "min": 6.47,
+      "25%": 7.35,
+      "50%": 7.92,
+      "75%": 8.83,
+      "max": 11.61
+    },
+    "pct_60ymas": {
+      "count": 65.0,
+      "mean": 14.296,
+      "std": 4.277,
+      "min": 1.394,
+      "25%": 11.507,
+      "50%": 14.407,
+      "75%": 16.33,
+      "max": 26.166
+    },
+    "pct_condicion_mental": {
+      "count": 65.0,
+      "mean": 1.564,
+      "std": 1.039,
+      "min": 0.174,
+      "25%": 0.962,
+      "50%": 1.354,
+      "75%": 1.899,
+      "max": 6.483
+    },
+    "pct_viv_internet": {
+      "count": 65.0,
+      "mean": 33.578,
+      "std": 16.93,
+      "min": 4.895,
+      "25%": 19.558,
+      "50%": 30.968,
+      "75%": 45.157,
+      "max": 75.598
+    },
+    "pct_desocupacion": {
+      "count": 65.0,
+      "mean": 1.264,
+      "std": 0.834,
+      "min": 0.0,
+      "25%": 0.633,
+      "50%": 1.163,
+      "75%": 1.711,
+      "max": 3.448
+    },
+    "pct_hogares_jefa": {
+      "count": 65.0,
+      "mean": 30.186,
+      "std": 8.785,
+      "min": 3.871,
+      "25%": 25.071,
+      "50%": 29.645,
+      "75%": 35.714,
+      "max": 54.601
+    },
+    "log_dist_psicologo": {
+      "count": 65.0,
+      "mean": 1.991,
+      "std": 0.888,
+      "min": 0.066,
+      "25%": 1.697,
+      "50%": 2.137,
+      "75%": 2.73,
+      "max": 3.203
+    },
+    "dist_psicologo_km": {
+      "count": 65.0,
+      "mean": 8.939,
+      "std": 6.727,
+      "min": 0.068,
+      "25%": 4.458,
+      "50%": 7.472,
+      "75%": 14.34,
+      "max": 23.604
+    }
+  },
+  "normalidad": {
+    "mardia": {
+      "asimetria_b1p": 27.101,
+      "asimetria_chi2": 293.59,
+      "gl": 120,
+      "asimetria_p": 1.449042719921649e-16,
+      "curtosis_b2p": 95.566,
+      "curtosis_esperada": 80,
+      "curtosis_z": 4.961,
+      "curtosis_p": 7.018478274099181e-07
+    },
+    "mahalanobis_sobre_chi2_975": [
+      "Jala",
+      "Río Marabasco",
+      "Benito Juárez de Peña Colorada (El Poblado)"
+    ],
+    "shapiro_por_variable_p": {
+      "pct_sin_afiliacion": 0.0908,
+      "escolaridad_prom": 0.0015,
+      "pct_60ymas": 0.4133,
+      "pct_condicion_mental": 0.0,
+      "pct_viv_internet": 0.1529,
+      "pct_desocupacion": 0.0227,
+      "pct_hogares_jefa": 0.2267,
+      "log_dist_psicologo": 0.0001
+    }
+  },
+  "pca": {
+    "valores_propios": [
+      2.407,
+      1.609,
+      1.081,
+      0.892,
+      0.816,
+      0.653,
+      0.313,
+      0.229
+    ],
+    "varianza_explicada": [
+      0.3009,
+      0.2011,
+      0.1351,
+      0.1115,
+      0.1021,
+      0.0817,
+      0.0391,
+      0.0286
+    ],
+    "varianza_acumulada": [
+      0.3009,
+      0.502,
+      0.6371,
+      0.7486,
+      0.8506,
+      0.9323,
+      0.9714,
+      1.0
+    ],
+    "kaiser_retiene": 3,
+    "nombres": {
+      "1": "Urbanización y acceso a psicólogos",
+      "2": "Vulnerabilidad del hogar"
+    },
+    "cargas": {
+      "CP1": {
+        "pct_sin_afiliacion": 0.018,
+        "escolaridad_prom": 0.894,
+        "pct_60ymas": -0.188,
+        "pct_condicion_mental": -0.309,
+        "pct_viv_internet": 0.863,
+        "pct_desocupacion": 0.026,
+        "pct_hogares_jefa": 0.098,
+        "log_dist_psicologo": -0.85
+      },
+      "CP2": {
+        "pct_sin_afiliacion": 0.004,
+        "escolaridad_prom": -0.005,
+        "pct_60ymas": 0.61,
+        "pct_condicion_mental": 0.446,
+        "pct_viv_internet": 0.163,
+        "pct_desocupacion": 0.669,
+        "pct_hogares_jefa": 0.75,
+        "log_dist_psicologo": -0.03
+      },
+      "CP3": {
+        "pct_sin_afiliacion": 0.931,
+        "escolaridad_prom": -0.177,
+        "pct_60ymas": -0.289,
+        "pct_condicion_mental": 0.24,
+        "pct_viv_internet": 0.063,
+        "pct_desocupacion": 0.134,
+        "pct_hogares_jefa": -0.052,
+        "log_dist_psicologo": -0.127
+      },
+      "CP4": {
+        "pct_sin_afiliacion": -0.097,
+        "escolaridad_prom": -0.096,
+        "pct_60ymas": -0.454,
+        "pct_condicion_mental": -0.481,
+        "pct_viv_internet": -0.254,
+        "pct_desocupacion": 0.577,
+        "pct_hogares_jefa": 0.193,
+        "log_dist_psicologo": -0.045
+      }
+    }
+  },
+  "extremos_cp1": {
+    "bajo": [
+      {
+        "nom_loc": "Jala",
+        "nom_mun": "Coquimatlán",
+        "cp1": -2.3986
+      },
+      {
+        "nom_loc": "Augusto Gómez Villanueva (Coalatilla)",
+        "nom_mun": "Armería",
+        "cp1": -1.8395
+      },
+      {
+        "nom_loc": "Los Reyes (Zorrillos)",
+        "nom_mun": "Armería",
+        "cp1": -1.821
+      },
+      {
+        "nom_loc": "Los Tepames",
+        "nom_mun": "Colima",
+        "cp1": -1.7551
+      },
+      {
+        "nom_loc": "Juluapan",
+        "nom_mun": "Villa de Álvarez",
+        "cp1": -1.7438
+      }
+    ],
+    "alto": [
+      {
+        "nom_loc": "Ciudad de Villa de Álvarez",
+        "nom_mun": "Villa de Álvarez",
+        "cp1": 4.533
+      },
+      {
+        "nom_loc": "Colima",
+        "nom_mun": "Colima",
+        "cp1": 3.6728
+      },
+      {
+        "nom_loc": "Manzanillo",
+        "nom_mun": "Manzanillo",
+        "cp1": 3.3775
+      },
+      {
+        "nom_loc": "Comala",
+        "nom_mun": "Comala",
+        "cp1": 2.951
+      },
+      {
+        "nom_loc": "Cuauhtémoc",
+        "nom_mun": "Cuauhtémoc",
+        "cp1": 2.6238
+      }
+    ]
+  },
+  "extremos_cp2": {
+    "alto": [
+      {
+        "nom_loc": "Francisco Villa",
+        "nom_mun": "Manzanillo",
+        "cp2": 2.6054
+      },
+      {
+        "nom_loc": "Madrid",
+        "nom_mun": "Tecomán",
+        "cp2": 2.2817
+      },
+      {
+        "nom_loc": "Camotlán de Miraflores",
+        "nom_mun": "Manzanillo",
+        "cp2": 2.1297
+      },
+      {
+        "nom_loc": "El Chavarín",
+        "nom_mun": "Manzanillo",
+        "cp2": 2.1098
+      },
+      {
+        "nom_loc": "Colonia Flor de Coco",
+        "nom_mun": "Armería",
+        "cp2": 1.9181
+      }
+    ]
+  },
+  "manova_zona": {
+    "n_por_grupo": {
+      "resto": 37,
+      "metropolitana": 28
+    },
+    "estadisticos": {
+      "wilks": {
+        "valor": 0.5765,
+        "F": 5.143,
+        "gl_num": 8.0,
+        "gl_den": 56.0,
+        "p": 7.898917071034857e-05
+      },
+      "pillai": {
+        "valor": 0.4235,
+        "F": 5.143,
+        "gl_num": 8.0,
+        "gl_den": 56.0,
+        "p": 7.898917071034857e-05
+      },
+      "hotelling": {
+        "valor": 0.7347,
+        "F": 5.143,
+        "gl_num": 8.0,
+        "gl_den": 56.00000000000001,
+        "p": 7.898917071034842e-05
+      },
+      "roy": {
+        "valor": 0.7347,
+        "F": 5.143,
+        "gl_num": 8.0,
+        "gl_den": 56.0,
+        "p": 7.898917071034857e-05
+      }
+    },
+    "anovas": {
+      "pct_sin_afiliacion": {
+        "F": 0.923,
+        "p": 0.3403155006269556,
+        "p_bonferroni": 1.0
+      },
+      "escolaridad_prom": {
+        "F": 4.433,
+        "p": 0.03924658732600459,
+        "p_bonferroni": 0.3139726986080367
+      },
+      "pct_60ymas": {
+        "F": 5.292,
+        "p": 0.024749076774042856,
+        "p_bonferroni": 0.19799261419234285
+      },
+      "pct_condicion_mental": {
+        "F": 0.757,
+        "p": 0.38762444151416064,
+        "p_bonferroni": 1.0
+      },
+      "pct_viv_internet": {
+        "F": 11.796,
+        "p": 0.001054873803278702,
+        "p_bonferroni": 0.008438990426229616
+      },
+      "pct_desocupacion": {
+        "F": 0.6,
+        "p": 0.44153067626128084,
+        "p_bonferroni": 1.0
+      },
+      "pct_hogares_jefa": {
+        "F": 1.709,
+        "p": 0.19592686528248193,
+        "p_bonferroni": 1.0
+      },
+      "log_dist_psicologo": {
+        "F": 10.556,
+        "p": 0.0018595227342113935,
+        "p_bonferroni": 0.014876181873691148
+      }
+    },
+    "medias": {
+      "metropolitana": {
+        "pct_sin_afiliacion": 16.452,
+        "escolaridad_prom": 8.523,
+        "pct_60ymas": 15.654,
+        "pct_condicion_mental": 1.693,
+        "pct_viv_internet": 41.247,
+        "pct_desocupacion": 1.356,
+        "pct_hogares_jefa": 28.558,
+        "log_dist_psicologo": 1.607
+      },
+      "resto": {
+        "pct_sin_afiliacion": 14.884,
+        "escolaridad_prom": 7.942,
+        "pct_60ymas": 13.268,
+        "pct_condicion_mental": 1.466,
+        "pct_viv_internet": 27.774,
+        "pct_desocupacion": 1.194,
+        "pct_hogares_jefa": 31.418,
+        "log_dist_psicologo": 2.282
+      }
+    },
+    "box_m": {
+      "M": 73.47,
+      "chi2": 63.42,
+      "gl": 36,
+      "p": 0.0032006248255975873
+    },
+    "permutacion": {
+      "pillai_observado": 0.4235,
+      "permutaciones": 4999,
+      "p": 0.0002
+    }
+  },
+  "manova_oferta": {
+    "n_por_grupo": {
+      "alta": 30,
+      "media": 22,
+      "baja": 13
+    },
+    "estadisticos": {
+      "wilks": {
+        "valor": 0.5214,
+        "F": 2.646,
+        "gl_num": 16.0,
+        "gl_den": 110.0,
+        "p": 0.0015084697530297598
+      },
+      "pillai": {
+        "valor": 0.5518,
+        "F": 2.667,
+        "gl_num": 16.0,
+        "gl_den": 112.0,
+        "p": 0.001358369100589549
+      },
+      "hotelling": {
+        "valor": 0.7777,
+        "F": 2.637,
+        "gl_num": 16.0,
+        "gl_den": 86.48252911813644,
+        "p": 0.0020918955699268924
+      },
+      "roy": {
+        "valor": 0.4928,
+        "F": 3.45,
+        "gl_num": 8.0,
+        "gl_den": 56.0,
+        "p": 0.00269190726277763
+      }
+    },
+    "anovas": {
+      "pct_sin_afiliacion": {
+        "F": 4.819,
+        "p": 0.011343579229949375,
+        "p_bonferroni": 0.090748633839595
+      },
+      "escolaridad_prom": {
+        "F": 2.554,
+        "p": 0.08596053497576103,
+        "p_bonferroni": 0.6876842798060883
+      },
+      "pct_60ymas": {
+        "F": 0.199,
+        "p": 0.820155859192773,
+        "p_bonferroni": 1.0
+      },
+      "pct_condicion_mental": {
+        "F": 0.863,
+        "p": 0.426910246876008,
+        "p_bonferroni": 1.0
+      },
+      "pct_viv_internet": {
+        "F": 0.154,
+        "p": 0.857713344674637,
+        "p_bonferroni": 1.0
+      },
+      "pct_desocupacion": {
+        "F": 0.358,
+        "p": 0.7007059291807936,
+        "p_bonferroni": 1.0
+      },
+      "pct_hogares_jefa": {
+        "F": 3.961,
+        "p": 0.024056162148038657,
+        "p_bonferroni": 0.19244929718430925
+      },
+      "log_dist_psicologo": {
+        "F": 2.395,
+        "p": 0.0995618925923302,
+        "p_bonferroni": 0.7964951407386416
+      }
+    },
+    "medias": {
+      "alta": {
+        "pct_sin_afiliacion": 18.102,
+        "escolaridad_prom": 8.366,
+        "pct_60ymas": 14.028,
+        "pct_condicion_mental": 1.699,
+        "pct_viv_internet": 33.35,
+        "pct_desocupacion": 1.355,
+        "pct_hogares_jefa": 31.215,
+        "log_dist_psicologo": 2.023
+      },
+      "baja": {
+        "pct_sin_afiliacion": 13.88,
+        "escolaridad_prom": 7.575,
+        "pct_60ymas": 14.934,
+        "pct_condicion_mental": 1.65,
+        "pct_viv_internet": 31.714,
+        "pct_desocupacion": 1.232,
+        "pct_hogares_jefa": 34.224,
+        "log_dist_psicologo": 2.38
+      },
+      "media": {
+        "pct_sin_afiliacion": 13.084,
+        "escolaridad_prom": 8.32,
+        "pct_60ymas": 14.284,
+        "pct_condicion_mental": 1.328,
+        "pct_viv_internet": 34.99,
+        "pct_desocupacion": 1.158,
+        "pct_hogares_jefa": 26.397,
+        "log_dist_psicologo": 1.719
+      }
+    },
+    "box_m": {
+      "M": 103.86,
+      "chi2": 82.18,
+      "gl": 72,
+      "p": 0.19320295246165997
+    },
+    "permutacion": {
+      "pillai_observado": 0.5518,
+      "permutaciones": 4999,
+      "p": 0.002
+    }
+  }
+}

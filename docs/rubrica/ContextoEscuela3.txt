@@ -1,0 +1,14 @@
+📌 Objetivo de la Entrega E3:
+Optimizar formalmente el pipeline de datos demostrando mejoras medibles y publicar el dataset curado con su ficha técnica para terceros.
+Ponderación: 15% de la Unidad 4.
+
+📦 Entregables en su repositorio (Tag 'e3'):
+1. Optimización Medida del Pipeline:
+• Comparativa cuantitativa de antes vs. después en tiempo de ejecución, uso de memoria y reducción de errores.
+2. Publicación de Dataset y Datasheet (docs/E3/datasheet.md):
+• Dataset limpio publicado con licencia abierta.
+• Ficha técnica estandarizada (Datasheet for Datasets): motivación, composición, proceso de recolección, preprocesamiento y casos de uso recomendados/no recomendados.
+3. Ficha de entrega (docs/E3/ENTREGA.md) y relatoría de etapa (docs/relatoria-E3.md).
+
+🚀 Instrucciones de Entrega:
+Generen el tag 'e3' en su repositorio y registren el enlace en el formulario oficial.

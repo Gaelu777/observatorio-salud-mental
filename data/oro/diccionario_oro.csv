@@ -1,0 +1,129 @@
+tabla,columna,descripcion,unidad_dominio,origen,filas,tipo,nulos_pct,min,max,distintos,ejemplo
+serie_mensual_colima.csv,periodo,Mes (AAAA-MM) o trimestre (AAAA-Tn) de ocurrencia,texto,EDR: anio_ocur + mes_ocurr,72,texto,0.0,,,72,2018-01
+serie_mensual_colima.csv,anio,Año de ocurrencia de la defunción,2018-2023,EDR: anio_ocur,72,numérico,0.0,2018.0,2023.0,6,2018
+serie_mensual_colima.csv,mes,Mes de ocurrencia,1-12,EDR: mes_ocurr,72,numérico,0.0,1.0,12.0,12,1
+serie_mensual_colima.csv,trimestre,Trimestre de ocurrencia,1-4,Derivado del mes,72,numérico,0.0,1.0,4.0,4,1
+serie_mensual_colima.csv,semestre,Semestre de ocurrencia,1-2,Derivado del mes,72,numérico,0.0,1.0,2.0,2,1
+serie_mensual_colima.csv,suicidio,Defunciones de residentes de Colima con causa CIE-10 X60-X84 (lesiones autoinfligidas),conteo,"EDR: causa_def, ent_resid=06",72,numérico,0.0,0.0,13.0,12,8
+serie_mensual_colima.csv,suicidio_mes_imputado,1 si el mes de ocurrencia faltaba y se imputó (ver reporte de limpieza) de `suicidio`,0/1,Derivado en Oro (src/oro.py),72,numérico,0.0,0.0,1.0,2,0
+serie_mensual_colima.csv,suicidio_atipico_iqr,"True si queda fuera de [Q1 − 1.5·IQR, Q3 + 1.5·IQR] (marcado, no borrado) de `suicidio`",booleano,Derivado en Oro (src/oro.py),72,booleano,0.0,,,2,False
+serie_mensual_colima.csv,suicidio_z_robusto,0.6745·(x − mediana)/MAD de `suicidio`,adimensional,Derivado en Oro (src/oro.py),72,numérico,0.0,-2.698,6.07,12,2.698
+serie_mensual_colima.csv,suicidio_atipico_z_robusto,True si |z robusto| > 3.5 de `suicidio`,booleano,Derivado en Oro (src/oro.py),72,booleano,0.0,,,2,False
+serie_mensual_colima.csv,suicidio_winsor,Valor recortado a los límites IQR (para modelos sensibles a extremos) de `suicidio`,misma unidad,Derivado en Oro (src/oro.py),72,numérico,0.0,0.0,8.625,10,8.0
+serie_mensual_colima.csv,suicidio_minmax,"Normalización min-max a [0, 1] de `suicidio`",0-1,Derivado en Oro (src/oro.py),72,numérico,0.0,0.0,1.0,12,0.6154
+serie_mensual_colima.csv,suicidio_z,"Estandarización z-score (media 0, desviación 1) de `suicidio`",adimensional,Derivado en Oro (src/oro.py),72,numérico,0.0,-1.8949,3.529,12,1.4429
+serie_mensual_colima.csv,trastorno_mental,Defunciones con causa CIE-10 capítulo F (trastornos mentales y del comportamiento),conteo,"EDR: causa_def, ent_resid=06",72,numérico,0.0,0.0,8.0,9,4
+serie_mensual_colima.csv,trastorno_mental_mes_imputado,1 si el mes de ocurrencia faltaba y se imputó (ver reporte de limpieza) de `trastorno_mental`,0/1,Derivado en Oro (src/oro.py),72,numérico,0.0,0.0,0.0,1,0
+serie_mensual_colima.csv,trastorno_mental_atipico_iqr,"True si queda fuera de [Q1 − 1.5·IQR, Q3 + 1.5·IQR] (marcado, no borrado) de `trastorno_mental`",booleano,Derivado en Oro (src/oro.py),72,booleano,0.0,,,1,False
+serie_mensual_colima.csv,trastorno_mental_z_robusto,0.6745·(x − mediana)/MAD de `trastorno_mental`,adimensional,Derivado en Oro (src/oro.py),72,numérico,0.0,-2.023,3.372,9,0.674
+serie_mensual_colima.csv,trastorno_mental_atipico_z_robusto,True si |z robusto| > 3.5 de `trastorno_mental`,booleano,Derivado en Oro (src/oro.py),72,booleano,0.0,,,1,False
+serie_mensual_colima.csv,trastorno_mental_winsor,Valor recortado a los límites IQR (para modelos sensibles a extremos) de `trastorno_mental`,misma unidad,Derivado en Oro (src/oro.py),72,numérico,0.0,0.0,8.0,9,4.0
+serie_mensual_colima.csv,trastorno_mental_minmax,"Normalización min-max a [0, 1] de `trastorno_mental`",0-1,Derivado en Oro (src/oro.py),72,numérico,0.0,0.0,1.0,9,0.5
+serie_mensual_colima.csv,trastorno_mental_z,"Estandarización z-score (media 0, desviación 1) de `trastorno_mental`",adimensional,Derivado en Oro (src/oro.py),72,numérico,0.0,-1.564,2.9859,9,0.7109
+serie_mensual_colima.csv,n_registros_fuente,Registros de Bronce que sostienen la fila (ver linaje_oro.csv),conteo,Linaje,72,numérico,0.0,2.0,19.0,15,12
+serie_mensual_colima.csv,fecha_ingesta_max,Fecha UTC de la captura más reciente entre los registros que forman la fila,ISO 8601,manifiesto Bronce,72,texto,0.0,,,6,2026-11-23T17:06:27Z
+serie_trimestral_colima.csv,periodo,Mes (AAAA-MM) o trimestre (AAAA-Tn) de ocurrencia,texto,EDR: anio_ocur + mes_ocurr,24,texto,0.0,,,24,2018-T1
+serie_trimestral_colima.csv,anio,Año de ocurrencia de la defunción,2018-2023,EDR: anio_ocur,24,numérico,0.0,2018.0,2023.0,6,2018
+serie_trimestral_colima.csv,trimestre,Trimestre de ocurrencia,1-4,Derivado del mes,24,numérico,0.0,1.0,4.0,4,1
+serie_trimestral_colima.csv,suicidio,Defunciones de residentes de Colima con causa CIE-10 X60-X84 (lesiones autoinfligidas),conteo,"EDR: causa_def, ent_resid=06",24,numérico,0.0,6.0,25.0,13,17
+serie_trimestral_colima.csv,trastorno_mental,Defunciones con causa CIE-10 capítulo F (trastornos mentales y del comportamiento),conteo,"EDR: causa_def, ent_resid=06",24,numérico,0.0,2.0,15.0,11,6
+serie_trimestral_colima.csv,suicidio_minmax,"Normalización min-max a [0, 1] de `suicidio`",0-1,Derivado en Oro (src/oro.py),24,numérico,0.0,0.0,1.0,13,0.5789
+serie_trimestral_colima.csv,suicidio_z,"Estandarización z-score (media 0, desviación 1) de `suicidio`",adimensional,Derivado en Oro (src/oro.py),24,numérico,0.0,-1.8247,2.7221,13,0.8077
+serie_trimestral_colima.csv,trastorno_mental_minmax,"Normalización min-max a [0, 1] de `trastorno_mental`",0-1,Derivado en Oro (src/oro.py),24,numérico,0.0,0.0,1.0,11,0.3077
+serie_trimestral_colima.csv,trastorno_mental_z,"Estandarización z-score (media 0, desviación 1) de `trastorno_mental`",adimensional,Derivado en Oro (src/oro.py),24,numérico,0.0,-2.0466,2.2103,11,-0.7368
+serie_trimestral_colima.csv,n_registros_fuente,Registros de Bronce que sostienen la fila (ver linaje_oro.csv),conteo,Linaje,24,numérico,0.0,14.0,38.0,13,23
+serie_trimestral_colima.csv,fecha_ingesta_max,Fecha UTC de la captura más reciente entre los registros que forman la fila,ISO 8601,manifiesto Bronce,24,texto,0.0,,,6,2026-11-23T17:06:27Z
+factores_suicidio.csv,anio,Año de ocurrencia de la defunción,2018-2023,EDR: anio_ocur,137,numérico,0.0,2018.0,2023.0,6,2018
+factores_suicidio.csv,trimestre,Trimestre de ocurrencia,1-4,Derivado del mes,137,numérico,0.0,1.0,4.0,4,1
+factores_suicidio.csv,sexo,Sexo de la persona fallecida (NE = no especificado),H / M / NE,EDR: sexo,137,texto,0.0,,,2,H
+factores_suicidio.csv,grupo_edad,Grupo de edad en años cumplidos (NE = no especificado),rangos,EDR: edad (discretizada),137,texto,0.0,,,5,15-24
+factores_suicidio.csv,zona,"Zona Metropolitana Colima-Villa de Álvarez (002, 003, 004, 005, 010) vs resto del estado",metropolitana / resto / NE,Jerarquía municipio -> zona,137,texto,0.0,,,3,metropolitana
+factores_suicidio.csv,suicidios,Suicidios en la combinación de factores,conteo,EDR,137,numérico,0.0,1.0,9.0,9,1
+factores_suicidio.csv,n_registros_fuente,Registros de Bronce que sostienen la fila (ver linaje_oro.csv),conteo,Linaje,137,numérico,0.0,1.0,9.0,9,1
+factores_suicidio.csv,fecha_ingesta_max,Fecha UTC de la captura más reciente entre los registros que forman la fila,ISO 8601,manifiesto Bronce,137,texto,0.0,,,6,2026-11-23T17:06:27Z
+municipios_colima.csv,cve_mun,Clave INEGI del municipio (3 dígitos),001-010,DENUE / Censo / EDR,10,texto,0.0,,,10,001
+municipios_colima.csv,nom_mun,Nombre del municipio,texto,Censo 2020,10,texto,0.0,,,10,Armería
+municipios_colima.csv,pobtot,Población total 2020,personas,Censo 2020 ITER,10,numérico,0.0,5623.0,191031.0,10,27626
+municipios_colima.csv,suicidios_2018_2023,"Suicidios de residentes del municipio, 6 años",conteo,EDR,10,numérico,0.0,0.0,84.0,9,17
+municipios_colima.csv,trastornos_mentales_2018_2023,"Defunciones por trastornos mentales de residentes, 6 años",conteo,EDR,10,numérico,0.0,3.0,61.0,8,7
+municipios_colima.csv,consultorios_psic_privados,Consultorios de psicología del sector privado (SCIAN 621331),conteo,DENUE,10,numérico,0.0,0.0,59.0,7,0
+municipios_colima.csv,consultorios_psic_publicos,Consultorios de psicología del sector público (SCIAN 621332),conteo,DENUE,10,numérico,0.0,0.0,3.0,3,0
+municipios_colima.csv,consultorios_psic,Total de consultorios de psicología,conteo,DENUE,10,numérico,0.0,0.0,62.0,6,0
+municipios_colima.csv,consultorios_por_100k,Consultorios por cada 100 mil habitantes (indicador de OFERTA),tasa,DENUE / Censo,10,numérico,0.0,0.0,39.48,9,0.0
+municipios_colima.csv,tasa_suicidio_anual_100k,Suicidios por año por cada 100 mil habitantes (indicador de NECESIDAD),tasa,EDR / Censo,10,numérico,0.0,0.0,11.86,10,10.26
+municipios_colima.csv,tasa_trast_mental_anual_100k,Defunciones por trastorno mental por año por 100 mil hab.,tasa,EDR / Censo,10,numérico,0.0,2.67,8.89,10,4.22
+municipios_colima.csv,zona,"Zona Metropolitana Colima-Villa de Álvarez (002, 003, 004, 005, 010) vs resto del estado",metropolitana / resto / NE,Jerarquía municipio -> zona,10,texto,0.0,,,2,resto
+municipios_colima.csv,consultorios_por_100k_minmax,"Normalización min-max a [0, 1] de `consultorios_por_100k`",0-1,Derivado en Oro (src/oro.py),10,numérico,0.0,0.0,1.0,9,0.0
+municipios_colima.csv,consultorios_por_100k_z,"Estandarización z-score (media 0, desviación 1) de `consultorios_por_100k`",adimensional,Derivado en Oro (src/oro.py),10,numérico,0.0,-0.9566,2.562,9,-0.9566
+municipios_colima.csv,tasa_suicidio_anual_100k_minmax,"Normalización min-max a [0, 1] de `tasa_suicidio_anual_100k`",0-1,Derivado en Oro (src/oro.py),10,numérico,0.0,0.0,1.0,10,0.8651
+municipios_colima.csv,tasa_suicidio_anual_100k_z,"Estandarización z-score (media 0, desviación 1) de `tasa_suicidio_anual_100k`",adimensional,Derivado en Oro (src/oro.py),10,numérico,0.0,-2.2048,1.3456,10,0.8667
+municipios_colima.csv,tasa_trast_mental_anual_100k_minmax,"Normalización min-max a [0, 1] de `tasa_trast_mental_anual_100k`",0-1,Derivado en Oro (src/oro.py),10,numérico,0.0,0.0,1.0,10,0.2492
+municipios_colima.csv,tasa_trast_mental_anual_100k_z,"Estandarización z-score (media 0, desviación 1) de `tasa_trast_mental_anual_100k`",adimensional,Derivado en Oro (src/oro.py),10,numérico,0.0,-1.4963,1.8856,10,-0.6535
+municipios_colima.csv,pobtot_minmax,"Normalización min-max a [0, 1] de `pobtot`",0-1,Derivado en Oro (src/oro.py),10,numérico,0.0,0.0,1.0,10,0.1187
+municipios_colima.csv,pobtot_z,"Estandarización z-score (media 0, desviación 1) de `pobtot`",adimensional,Derivado en Oro (src/oro.py),10,numérico,0.0,-0.9403,1.6419,10,-0.6339
+municipios_colima.csv,oferta_nivel,Tercil de consultorios_por_100k,baja / media / alta,Discretización por frecuencia,10,texto,0.0,,,3,baja
+municipios_colima.csv,necesidad_nivel,Tercil de tasa_suicidio_anual_100k,baja / media / alta,Discretización por frecuencia,10,texto,0.0,,,3,alta
+municipios_colima.csv,n_registros_fuente,Registros de Bronce que sostienen la fila (ver linaje_oro.csv),conteo,Linaje,10,numérico,0.0,5.0,191.0,10,25
+municipios_colima.csv,fecha_ingesta_max,Fecha UTC de la captura más reciente entre los registros que forman la fila,ISO 8601,manifiesto Bronce,10,texto,0.0,,,1,2026-11-23T17:17:24Z
+consultorios_psicologia_geo.csv,id_registro,Identificador de linaje FUENTE:archivo:fila,texto,Generado en Plata,117,texto,0.0,,,117,DENUE:denue_colima_scian621_20261123:15
+consultorios_psicologia_geo.csv,clee,"Clave Única del Establecimiento del DENUE (identificador público del negocio, no de una persona)",texto,DENUE,117,texto,0.0,,,117,06003621331000021100000000U2
+consultorios_psicologia_geo.csv,codigo_act,Código SCIAN de la actividad,621331 privado / 621332 público,DENUE,117,texto,0.0,,,2,621331
+consultorios_psicologia_geo.csv,sector,"Sector del consultorio, derivado del código SCIAN",privado / publico,DENUE,117,texto,0.0,,,2,privado
+consultorios_psicologia_geo.csv,cve_mun,Clave INEGI del municipio (3 dígitos),001-010,DENUE / Censo / EDR,117,texto,0.0,,,8,003
+consultorios_psicologia_geo.csv,cve_mun_geo,Municipio en el que cae el punto según el polígono del Marco Geoestadístico,001-010,Unión espacial (GeoPandas),117,texto,0.0,,,8,003
+consultorios_psicologia_geo.csv,ubicacion_consistente,True si cve_mun (declarado) = cve_mun_geo (calculado por el punto),booleano,Validación espacial,117,booleano,0.0,,,1,True
+consultorios_psicologia_geo.csv,per_ocu,Rango de personal ocupado del establecimiento,texto (p. ej. 0 a 5 personas),DENUE,117,texto,0.0,,,3,0 a 5 personas
+consultorios_psicologia_geo.csv,fecha_alta,Mes en que el establecimiento se dio de alta en el DENUE,AAAA-MM,DENUE,117,texto,0.0,,,7,2019-11
+consultorios_psicologia_geo.csv,latitud,Latitud WGS84,grados,DENUE,117,numérico,0.0,18.9093,19.3868,97,19.32015426
+consultorios_psicologia_geo.csv,longitud,Longitud WGS84,grados,DENUE,117,numérico,0.0,-104.3538,-103.5731,97,-103.7614833
+consultorios_psicologia_geo.csv,distancia_centro_m,"Distancia en línea recta al Jardín Libertad (centro de Colima), medida en EPSG:6372",metros,Cálculo geoespacial,117,numérico,0.0,320.0,67355.0,95,9306.0
+consultorios_psicologia_geo.csv,archivo_bronce,Archivo de Bronce del que viene el registro,ruta,Linaje,117,texto,0.0,,,1,data/bronce/inegi_denue/denue_colima_sci
+consultorios_psicologia_geo.csv,fila_bronce,Número de fila dentro del archivo de Bronce,entero,Linaje,117,numérico,0.0,15.0,1650.0,117,15
+consultorios_psicologia_geo.csv,fecha_ingesta_utc,Fecha UTC en que se capturó el registro de Bronce,ISO 8601,manifiesto Bronce,117,texto,0.0,,,1,2026-11-23T17:02:09Z
+consultorios_psicologia_geo.csv,n_registros_fuente,Registros de Bronce que sostienen la fila (ver linaje_oro.csv),conteo,Linaje,117,numérico,0.0,1.0,1.0,1,1
+consultorios_psicologia_geo.csv,fecha_ingesta_max,Fecha UTC de la captura más reciente entre los registros que forman la fila,ISO 8601,manifiesto Bronce,117,texto,0.0,,,1,2026-11-23T17:02:09Z
+competencia_centro_colima.csv,radio_m,Radio alrededor del centro de Colima,500 / 1000 / 2000 m,Parámetro,3,numérico,0.0,500.0,2000.0,3,500
+competencia_centro_colima.csv,consultorios_psic,Total de consultorios de psicología,conteo,DENUE,3,numérico,0.0,3.0,31.0,3,3
+competencia_centro_colima.csv,privados,Consultorios privados dentro del radio,conteo,DENUE,3,numérico,0.0,3.0,30.0,3,3
+competencia_centro_colima.csv,publicos,Consultorios públicos dentro del radio,conteo,DENUE,3,numérico,0.0,0.0,1.0,2,0
+competencia_centro_colima.csv,pct_del_municipio_colima,% de los consultorios del municipio de Colima que están dentro del radio,%,Cálculo,3,numérico,0.0,4.8,50.0,3,4.8
+competencia_centro_colima.csv,n_registros_fuente,Registros de Bronce que sostienen la fila (ver linaje_oro.csv),conteo,Linaje,3,numérico,0.0,3.0,31.0,3,3
+competencia_centro_colima.csv,fecha_ingesta_max,Fecha UTC de la captura más reciente entre los registros que forman la fila,ISO 8601,manifiesto Bronce,3,texto,0.0,,,1,2026-11-23T17:02:09Z
+pronostico_suicidio_colima.csv,periodo,Mes (AAAA-MM) o trimestre (AAAA-Tn) de ocurrencia,texto,EDR: anio_ocur + mes_ocurr,12,texto,0.0,,,12,2024-01
+pronostico_suicidio_colima.csv,modelo,Modelo de pronóstico ganador (menor RMSE en la prueba 2023),texto,src/pronostico.py,12,texto,0.0,,,1,"ARIMA(0, 0, 0)"
+pronostico_suicidio_colima.csv,pronostico,Valor esperado del mes,suicidios,src/pronostico.py,12,numérico,0.0,4.54,4.54,1,4.54
+pronostico_suicidio_colima.csv,limite_inferior_95,Límite inferior del intervalo de predicción del 95 % (recortado a 0),suicidios,src/pronostico.py,12,numérico,0.0,0.0,0.0,1,0.0
+pronostico_suicidio_colima.csv,limite_superior_95,Límite superior del intervalo de predicción del 95 %,suicidios,src/pronostico.py,12,numérico,0.0,9.21,9.21,1,9.21
+pronostico_suicidio_colima.csv,fuente_entrada,Tabla Oro usada para entrenar el modelo,ruta,Linaje,12,texto,0.0,,,1,data/oro/serie_mensual_colima.csv
+pronostico_suicidio_colima.csv,meses_entrenamiento,Meses usados para ajustar el modelo final,entero,src/pronostico.py,12,numérico,0.0,72.0,72.0,1,72
+localidades_colima.csv,id_registro,Identificador de linaje FUENTE:archivo:fila,texto,Generado en Plata,65,texto,0.0,,,65,CENSO:iter_06_cpv2020:6
+localidades_colima.csv,archivo_bronce,Archivo de Bronce del que viene el registro,ruta,Linaje,65,texto,0.0,,,1,data/bronce/inegi_censo2020/iter_06_cpv2
+localidades_colima.csv,fila_bronce,Número de fila dentro del archivo de Bronce,entero,Linaje,65,numérico,0.0,6.0,1200.0,65,6
+localidades_colima.csv,cve_mun,Clave INEGI del municipio (3 dígitos),001-010,DENUE / Censo / EDR,65,texto,0.0,,,10,001
+localidades_colima.csv,nom_mun,Nombre del municipio,texto,Censo 2020,65,texto,0.0,,,10,Armería
+localidades_colima.csv,cve_loc,"Clave INEGI de la localidad (4 dígitos, única dentro del municipio)",texto,Censo 2020 ITER,65,numérico,0.0,1.0,391.0,44,1
+localidades_colima.csv,nom_loc,Nombre de la localidad,texto,Censo 2020 ITER,65,texto,0.0,,,65,Ciudad de Armería
+localidades_colima.csv,pobtot,Población total 2020,personas,Censo 2020 ITER,65,numérico,0.0,500.0,159853.0,64,15368
+localidades_colima.csv,pct_sin_afiliacion,% de la población sin afiliación a servicios de salud,%,Censo: PSINDER / POBTOT,65,numérico,0.0,0.8711,37.6603,65,7.9451
+localidades_colima.csv,escolaridad_prom,Grado promedio de escolaridad de 15 años y más,años,Censo: GRAPROES,65,numérico,0.0,6.47,11.61,61,8.35
+localidades_colima.csv,pct_60ymas,% de la población de 60 años y más,%,Censo: P_60YMAS / POBTOT,65,numérico,0.0,1.3937,26.1665,65,14.4066
+localidades_colima.csv,pct_condicion_mental,% de la población con algún problema o condición mental,%,Censo: PCLIM_PMEN / POBTOT,65,numérico,0.0,0.1742,6.4833,65,1.2103
+localidades_colima.csv,pct_viv_internet,% de viviendas particulares habitadas con internet,%,Censo: VPH_INTER / TVIVPARHAB,65,numérico,0.0,4.8951,75.5977,64,34.8744
+localidades_colima.csv,pct_desocupacion,% de la población económicamente activa desocupada,%,Censo: PDESOCUP / PEA,65,numérico,0.0,0.0,3.4483,62,1.2118
+localidades_colima.csv,pct_hogares_jefa,% de hogares con persona de referencia mujer,%,Censo: HOGJEF_F / TOTHOG,65,numérico,0.0,3.871,54.6012,65,39.8755
+localidades_colima.csv,dist_psicologo_km,Distancia en línea recta al consultorio de psicología más cercano (EPSG:6372),km,Unión espacial Censo + DENUE,65,numérico,0.0,0.068,23.604,65,8.382
+localidades_colima.csv,log_dist_psicologo,log(1 + dist_psicologo_km); reduce el sesgo para el análisis multivariado,log-km,Derivado,65,numérico,0.0,0.0658,3.2029,65,2.2388
+localidades_colima.csv,zona,"Zona Metropolitana Colima-Villa de Álvarez (002, 003, 004, 005, 010) vs resto del estado",metropolitana / resto / NE,Jerarquía municipio -> zona,65,texto,0.0,,,2,resto
+localidades_colima.csv,oferta_nivel,Tercil de consultorios_por_100k,baja / media / alta,Discretización por frecuencia,65,texto,0.0,,,3,baja
+localidades_colima.csv,latitud,Latitud WGS84,grados,DENUE,65,numérico,0.0,18.7497,19.4103,65,18.93707277777778
+localidades_colima.csv,longitud,Longitud WGS84,grados,DENUE,65,numérico,0.0,-104.5578,-103.5283,64,-103.96499722222222
+localidades_colima.csv,mahalanobis2,Distancia de Mahalanobis al cuadrado al centroide de las 8 variables (> 17.5 = perfil atípico al 97.5 %),adimensional,src/multivariado.py,65,numérico,0.0,1.307,27.949,64,3.107
+localidades_colima.csv,cp1,Puntaje en CP1 'Urbanización y acceso a psicólogos' (alto = más acceso),z,PCA,65,numérico,0.0,-2.3986,4.533,65,0.0896
+localidades_colima.csv,cp2,Puntaje en CP2 'Vulnerabilidad del hogar' (alto = más vulnerable),z,PCA,65,numérico,0.0,-4.5228,2.6054,65,0.5111
+localidades_colima.csv,fecha_ingesta_utc,Fecha UTC en que se capturó el registro de Bronce,ISO 8601,manifiesto Bronce,65,texto,0.0,,,1,2026-11-23T17:17:24Z
+linaje_oro.csv,tabla_oro,Tabla Oro a la que pertenece la fila,nombre de tabla,Linaje,2191,texto,0.0,,,6,serie_mensual_colima
+linaje_oro.csv,clave_oro,"Llave de la fila en esa tabla (periodo, municipio, id...)",texto,Linaje,2191,texto,0.0,,,363,2018-10
+linaje_oro.csv,id_registro,Identificador de linaje FUENTE:archivo:fila,texto,Generado en Plata,2191,texto,0.0,,,652,EDR:defunciones_colima_registradas_2018:
+linaje_oro.csv,archivo_bronce,Archivo de Bronce del que viene el registro,ruta,Linaje,2191,texto,0.0,,,8,data/bronce/inegi_defunciones/defuncione
+linaje_oro.csv,fila_bronce,Número de fila dentro del archivo de Bronce,entero,Linaje,2191,numérico,0.0,5.0,7842.0,623,28
+linaje_oro.csv,fecha_ingesta_utc,Fecha UTC en que se capturó el registro de Bronce,ISO 8601,manifiesto Bronce,2191,texto,0.0,,,8,2026-11-23T17:06:27Z
