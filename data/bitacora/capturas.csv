@@ -1,2 +1,3 @@
 run_id,intento,evento,tipo,inicio_utc,fin_utc,duracion_seg,estado
 45504584852,1,schedule,diaria,2026-11-24T22:50:11Z,2026-11-24T22:50:59Z,48,success
+45709804050,1,schedule,diaria,2026-11-25T22:02:55Z,2026-11-25T22:03:32Z,37,failure
