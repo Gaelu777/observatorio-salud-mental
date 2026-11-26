@@ -22,6 +22,7 @@ import pytest
 
 import comun
 import diccionario_oro
+import extraer_denue
 import geoespacial
 import multivariado
 import oro
@@ -147,6 +148,20 @@ def test_coordenada_gms():
 
 
 # --------------------------------------------------------------------- utilidades Bronce
+def test_denue_normaliza_encabezados_nuevos():
+    # Formato del INEGI desde el 2026-11-25: mayúsculas y columnas renombradas.
+    nuevo = pd.DataFrame(columns=["CLEE", "CODIGO_ACT", "CVE_ENT", "CVE_MUN", "PER_OCU", "LATITUD",
+                                  "LONGITUD", "FECHA_ALTA", "TIPOCENCOM", "CVE_AGEB", "CVE_MZA"])
+    cols = list(extraer_denue.normalizar_columnas(nuevo).columns)
+    assert "codigo_act" in cols and "tipoCenCom" in cols
+    assert "ageb" in cols and "manzana" in cols
+
+
+def test_denue_falla_claro_si_falta_columna():
+    with pytest.raises(ValueError, match="codigo_act"):
+        extraer_denue.normalizar_columnas(pd.DataFrame(columns=["CLEE", "OTRA"]))
+
+
 def test_sha256(tmp_path):
     f = tmp_path / "a.txt"
     f.write_bytes(b"observatorio")

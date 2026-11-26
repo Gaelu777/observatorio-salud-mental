@@ -31,6 +31,31 @@ SALIDA = BRONCE / "inegi_denue"
 COLUMNAS_PERSONALES = ["nom_estab", "raz_social", "telefono", "correoelec", "www"]
 PREFIJO_SCIAN = "621"
 
+# El 2026-11-25 el INEGI cambió los encabezados del CSV: ahora vienen en
+# MAYÚSCULAS y algunas columnas se renombraron. Para no romper Plata, Oro ni los
+# archivos Bronce anteriores, los encabezados se normalizan al esquema histórico.
+# Solo cambian los NOMBRES de las columnas; los valores quedan idénticos.
+RENOMBRAR = {
+    "tipocencom": "tipoCenCom",
+    "nom_cencom": "nom_CenCom",
+    "tipounieco": "tipoUniEco",
+    "cve_ageb": "ageb",
+    "cve_mza": "manzana",
+}
+# Columnas que usa la capa Plata. Si el INEGI vuelve a cambiar el formato, la
+# corrida falla aquí con un mensaje claro en lugar de un KeyError más adelante.
+REQUERIDAS = ["clee", "codigo_act", "cve_ent", "cve_mun", "per_ocu", "latitud", "longitud", "fecha_alta"]
+
+
+def normalizar_columnas(df: pd.DataFrame) -> pd.DataFrame:
+    """Lleva los encabezados del DENUE al esquema histórico (minúsculas + renombres)."""
+    df = df.rename(columns=lambda c: c.strip().lower())
+    df = df.rename(columns=RENOMBRAR)
+    faltan = [c for c in REQUERIDAS if c not in df.columns]
+    if faltan:
+        raise ValueError(f"DENUE: el INEGI cambió el formato; faltan las columnas {faltan}")
+    return df
+
 
 def main() -> None:
     igual, huella = sin_cambios(URL)
@@ -51,6 +76,7 @@ def main() -> None:
                            if n.startswith("conjunto_de_datos/") and n.lower().endswith(".csv"))
             df = pd.read_csv(z.open(interno), dtype=str, encoding="latin-1", keep_default_na=False)
 
+    df = normalizar_columnas(df)
     df = df[df["codigo_act"].str.startswith(PREFIJO_SCIAN)]
     df = df.drop(columns=[c for c in COLUMNAS_PERSONALES if c in df.columns])
 
