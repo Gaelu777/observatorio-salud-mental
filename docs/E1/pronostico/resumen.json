@@ -166,7 +166,7 @@
       "smoothing_trend": 0.0
     },
     "Holt-Winters": {
-      "smoothing_level": 0.0976,
+      "smoothing_level": 0.0977,
       "smoothing_trend": 0.0153,
       "smoothing_seasonal": 0.0001,
       "damping_trend": 0.8
