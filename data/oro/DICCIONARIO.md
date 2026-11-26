@@ -119,7 +119,7 @@ Un registro por consultorio de psicología del DENUE (SCIAN 621331/621332) con c
 | `longitud` | Longitud WGS84 | grados | DENUE | numérico | 0.0 | -104.3538 | -103.5731 |
 | `distancia_centro_m` | Distancia en línea recta al Jardín Libertad (centro de Colima), medida en EPSG:6372 | metros | Cálculo geoespacial | numérico | 0.0 | 320.0 | 67355.0 |
 | `archivo_bronce` | Archivo de Bronce del que viene el registro | ruta | Linaje | texto | 0.0 |  |  |
-| `fila_bronce` | Número de fila dentro del archivo de Bronce | entero | Linaje | numérico | 0.0 | 15.0 | 1650.0 |
+| `fila_bronce` | Número de fila dentro del archivo de Bronce | entero | Linaje | numérico | 0.0 | 15.0 | 1651.0 |
 | `fecha_ingesta_utc` | Fecha UTC en que se capturó el registro de Bronce | ISO 8601 | manifiesto Bronce | texto | 0.0 |  |  |
 | `n_registros_fuente` | Registros de Bronce que sostienen la fila (ver linaje_oro.csv) | conteo | Linaje | numérico | 0.0 | 1.0 | 1.0 |
 | `fecha_ingesta_max` | Fecha UTC de la captura más reciente entre los registros que forman la fila | ISO 8601 | manifiesto Bronce | texto | 0.0 |  |  |

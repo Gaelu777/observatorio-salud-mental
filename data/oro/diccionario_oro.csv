@@ -64,8 +64,8 @@ municipios_colima.csv,pobtot_z,"Estandarización z-score (media 0, desviación 1
 municipios_colima.csv,oferta_nivel,Tercil de consultorios_por_100k,baja / media / alta,Discretización por frecuencia,10,texto,0.0,,,3,baja
 municipios_colima.csv,necesidad_nivel,Tercil de tasa_suicidio_anual_100k,baja / media / alta,Discretización por frecuencia,10,texto,0.0,,,3,alta
 municipios_colima.csv,n_registros_fuente,Registros de Bronce que sostienen la fila (ver linaje_oro.csv),conteo,Linaje,10,numérico,0.0,5.0,191.0,10,25
-municipios_colima.csv,fecha_ingesta_max,Fecha UTC de la captura más reciente entre los registros que forman la fila,ISO 8601,manifiesto Bronce,10,texto,0.0,,,1,2026-11-23T17:17:24Z
-consultorios_psicologia_geo.csv,id_registro,Identificador de linaje FUENTE:archivo:fila,texto,Generado en Plata,117,texto,0.0,,,117,DENUE:denue_colima_scian621_20261123:15
+municipios_colima.csv,fecha_ingesta_max,Fecha UTC de la captura más reciente entre los registros que forman la fila,ISO 8601,manifiesto Bronce,10,texto,0.0,,,2,2026-11-23T17:17:24Z
+consultorios_psicologia_geo.csv,id_registro,Identificador de linaje FUENTE:archivo:fila,texto,Generado en Plata,117,texto,0.0,,,117,DENUE:denue_colima_scian621_20261126:15
 consultorios_psicologia_geo.csv,clee,"Clave Única del Establecimiento del DENUE (identificador público del negocio, no de una persona)",texto,DENUE,117,texto,0.0,,,117,06003621331000021100000000U2
 consultorios_psicologia_geo.csv,codigo_act,Código SCIAN de la actividad,621331 privado / 621332 público,DENUE,117,texto,0.0,,,2,621331
 consultorios_psicologia_geo.csv,sector,"Sector del consultorio, derivado del código SCIAN",privado / publico,DENUE,117,texto,0.0,,,2,privado
@@ -78,17 +78,17 @@ consultorios_psicologia_geo.csv,latitud,Latitud WGS84,grados,DENUE,117,numérico
 consultorios_psicologia_geo.csv,longitud,Longitud WGS84,grados,DENUE,117,numérico,0.0,-104.3538,-103.5731,97,-103.7614833
 consultorios_psicologia_geo.csv,distancia_centro_m,"Distancia en línea recta al Jardín Libertad (centro de Colima), medida en EPSG:6372",metros,Cálculo geoespacial,117,numérico,0.0,320.0,67355.0,95,9306.0
 consultorios_psicologia_geo.csv,archivo_bronce,Archivo de Bronce del que viene el registro,ruta,Linaje,117,texto,0.0,,,1,data/bronce/inegi_denue/denue_colima_sci
-consultorios_psicologia_geo.csv,fila_bronce,Número de fila dentro del archivo de Bronce,entero,Linaje,117,numérico,0.0,15.0,1650.0,117,15
-consultorios_psicologia_geo.csv,fecha_ingesta_utc,Fecha UTC en que se capturó el registro de Bronce,ISO 8601,manifiesto Bronce,117,texto,0.0,,,1,2026-11-23T17:02:09Z
+consultorios_psicologia_geo.csv,fila_bronce,Número de fila dentro del archivo de Bronce,entero,Linaje,117,numérico,0.0,15.0,1651.0,117,15
+consultorios_psicologia_geo.csv,fecha_ingesta_utc,Fecha UTC en que se capturó el registro de Bronce,ISO 8601,manifiesto Bronce,117,texto,0.0,,,1,2026-11-26T06:38:25Z
 consultorios_psicologia_geo.csv,n_registros_fuente,Registros de Bronce que sostienen la fila (ver linaje_oro.csv),conteo,Linaje,117,numérico,0.0,1.0,1.0,1,1
-consultorios_psicologia_geo.csv,fecha_ingesta_max,Fecha UTC de la captura más reciente entre los registros que forman la fila,ISO 8601,manifiesto Bronce,117,texto,0.0,,,1,2026-11-23T17:02:09Z
+consultorios_psicologia_geo.csv,fecha_ingesta_max,Fecha UTC de la captura más reciente entre los registros que forman la fila,ISO 8601,manifiesto Bronce,117,texto,0.0,,,1,2026-11-26T06:38:25Z
 competencia_centro_colima.csv,radio_m,Radio alrededor del centro de Colima,500 / 1000 / 2000 m,Parámetro,3,numérico,0.0,500.0,2000.0,3,500
 competencia_centro_colima.csv,consultorios_psic,Total de consultorios de psicología,conteo,DENUE,3,numérico,0.0,3.0,31.0,3,3
 competencia_centro_colima.csv,privados,Consultorios privados dentro del radio,conteo,DENUE,3,numérico,0.0,3.0,30.0,3,3
 competencia_centro_colima.csv,publicos,Consultorios públicos dentro del radio,conteo,DENUE,3,numérico,0.0,0.0,1.0,2,0
 competencia_centro_colima.csv,pct_del_municipio_colima,% de los consultorios del municipio de Colima que están dentro del radio,%,Cálculo,3,numérico,0.0,4.8,50.0,3,4.8
 competencia_centro_colima.csv,n_registros_fuente,Registros de Bronce que sostienen la fila (ver linaje_oro.csv),conteo,Linaje,3,numérico,0.0,3.0,31.0,3,3
-competencia_centro_colima.csv,fecha_ingesta_max,Fecha UTC de la captura más reciente entre los registros que forman la fila,ISO 8601,manifiesto Bronce,3,texto,0.0,,,1,2026-11-23T17:02:09Z
+competencia_centro_colima.csv,fecha_ingesta_max,Fecha UTC de la captura más reciente entre los registros que forman la fila,ISO 8601,manifiesto Bronce,3,texto,0.0,,,1,2026-11-26T06:38:25Z
 pronostico_suicidio_colima.csv,periodo,Mes (AAAA-MM) o trimestre (AAAA-Tn) de ocurrencia,texto,EDR: anio_ocur + mes_ocurr,12,texto,0.0,,,12,2024-01
 pronostico_suicidio_colima.csv,modelo,Modelo de pronóstico ganador (menor RMSE en la prueba 2023),texto,src/pronostico.py,12,texto,0.0,,,1,"ARIMA(0, 0, 0)"
 pronostico_suicidio_colima.csv,pronostico,Valor esperado del mes,suicidios,src/pronostico.py,12,numérico,0.0,4.54,4.54,1,4.54
@@ -125,5 +125,5 @@ linaje_oro.csv,tabla_oro,Tabla Oro a la que pertenece la fila,nombre de tabla,Li
 linaje_oro.csv,clave_oro,"Llave de la fila en esa tabla (periodo, municipio, id...)",texto,Linaje,2191,texto,0.0,,,363,2018-10
 linaje_oro.csv,id_registro,Identificador de linaje FUENTE:archivo:fila,texto,Generado en Plata,2191,texto,0.0,,,652,EDR:defunciones_colima_registradas_2018:
 linaje_oro.csv,archivo_bronce,Archivo de Bronce del que viene el registro,ruta,Linaje,2191,texto,0.0,,,8,data/bronce/inegi_defunciones/defuncione
-linaje_oro.csv,fila_bronce,Número de fila dentro del archivo de Bronce,entero,Linaje,2191,numérico,0.0,5.0,7842.0,623,28
+linaje_oro.csv,fila_bronce,Número de fila dentro del archivo de Bronce,entero,Linaje,2191,numérico,0.0,5.0,7842.0,622,28
 linaje_oro.csv,fecha_ingesta_utc,Fecha UTC en que se capturó el registro de Bronce,ISO 8601,manifiesto Bronce,2191,texto,0.0,,,8,2026-11-23T17:06:27Z
