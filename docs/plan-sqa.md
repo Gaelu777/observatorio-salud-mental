@@ -57,7 +57,8 @@ Este plan cubre los dos.
 | Revisión automática (CI) | En cada push | GitHub Actions (`ci.yml`) | Palomita verde o tache rojo en el commit |
 | Revisión entre pares | Antes de crear cada tag (`e0` a `e4`) | El integrante que no escribió el cambio | Comentario en el commit o PR con la lista de la sección 5 |
 | Revisión contra la rúbrica | Antes de cada tag | Ambos | Tabla "criterio → archivo" en `docs/EX/ENTREGA.md` |
-| Auditoría cruzada | Del 19 al 23 de noviembre (E2) | Otro equipo | Reporte de hallazgos; cierre en E3 |
+| Auditoría cruzada | Del 19 al 23 de noviembre (E2) | **No realizada:** no se asignó otro equipo ni se recibió reporte | — |
+| Auditoría interna (sustituye a la cruzada) | 26 de noviembre (E3) | Luis Alejandro Mendoza Peñaloza | `docs/E3/auditoria-interna.md`; cierre en `docs/E3/cierre-auditoria.md` |
 | Postmortem | Al cerrar cada entrega | Ambos | Relatoría de etapa (`docs/relatoria-EX.md`) |
 
 ## 5. Pruebas
