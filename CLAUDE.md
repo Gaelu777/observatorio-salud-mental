@@ -1,89 +1,112 @@
-# Observatorio de Servicios Psicológicos — Proyecto Integrador (escuela)
+# Observatorio de Salud Mental — Colima (Proyecto Integrador escolar)
+
+> Instrucciones para cualquier asistente de IA que trabaje en este repositorio.
+> Última actualización: 26 de noviembre de 2026.
 
 ## Qué es este proyecto
 
-Proyecto escolar de **ingeniería/ciencia de datos**: un "observatorio" que captura datos públicos de forma automática, los limpia por capas (Bronce → Plata → Oro) y los usa para pronosticar, experimentar y comparar grupos.
+Proyecto escolar que integra tres materias: **Ingeniería de Datos**, **Análisis Estadístico** y **Calidad en Sistemas de Información**. Es un "observatorio" que captura datos públicos del INEGI de forma automática, los limpia por capas (Bronce → Plata → Oro) y los usa para pronosticar, experimentar y comparar grupos.
 
-La rúbrica oficial está en los archivos `docs/rubrica/ContextoEscuela0.txt` (E0), `ContextoEscuela1.txt` (E1) y `ContextoEscuela2.txt` (E2). **Esos archivos son la fuente de verdad de lo que se evalúa.** Léelos antes de proponer cualquier entregable y verifica cada punto contra ellos; la evaluación es literal (rutas de archivos, tags de git, número de periodos).
+**Equipo (2 integrantes):**
+- Gael Alexandro Cortez Sarmienta: dueño del repositorio, desarrollo del pipeline y análisis.
+- Luis Alejandro Mendoza Peñaloza: revisor SQA y auditor interno en E3 (planeación, investigación y diseño en etapas anteriores).
+
+**Región:** estado de **Colima**, México (10 municipios; en E3 la unidad de análisis son las 65 localidades de 500 habitantes o más).
+
+## Rúbrica (fuente de verdad)
+
+- La rúbrica **completa** de las 3 materias es el PDF `proyecto 4434#.pdf`. **No está en el repositorio** (cada integrante lo tiene de la escuela). Si no lo tienes, pídeselo al usuario antes de evaluar criterios de Calidad o de Estadística.
+- `docs/rubrica/ContextoEscuela0.txt` a `ContextoEscuela3.txt` solo cubren **Ingeniería de Datos**.
+- La evaluación es literal: rutas de archivos, tags de git y número de periodos. Verifica cada punto contra la rúbrica.
 
 ## Cliente real
 
-El cliente es una **psicóloga con consultorio propio en México**. Ella es:
-- La persona entrevistada para la "Entrevista de campo" de E0.
-- El "cliente potencial" del observatorio: los hallazgos deben servirle a ella (competencia cercana, temporadas de mayor demanda, zonas con poca oferta, etc.).
-
-Existe un proyecto aparte (`D:\sistemaPsicologia`, sistema de gestión del consultorio en Node + Supabase). **No tiene relación técnica con este repo**: no se comparte código ni base de datos, y NUNCA se usan datos de ese sistema aquí.
+Una **psicóloga con consultorio propio en México**. Es la persona de la entrevista de campo (E0) y la usuaria potencial del observatorio: los hallazgos deben servirle (competencia cercana, zonas con poca oferta, temporadas de demanda).
 
 ## Regla de privacidad (no negociable)
 
-- Este repo lo ven 3 profesores como colaboradores. Solo contiene **datos públicos y agregados**.
-- **Cero datos personales.** Nunca datos de pacientes de la psicóloga, ni nombres, teléfonos o información clínica. Ni siquiera "anonimizados".
-- La entrevista se documenta con lo que ella dijo sobre el sector, no con información de sus pacientes.
-- Nada de credenciales en el código: tokens/API keys van en `.env` (en `.gitignore`) o en GitHub Secrets para Actions.
+- Este repositorio lo ven 3 profesores. Solo contiene **datos públicos y agregados**.
+- **Cero datos personales.** Nunca datos de pacientes, ni nombres, teléfonos o información clínica, ni siquiera "anonimizados".
+- La entrevista se documenta solo con lo que ella dijo **sobre el sector**.
+- El sistema de gestión del consultorio es otro proyecto, sin relación técnica con este. **Nunca** se usan sus datos aquí.
+- El extractor del DENUE elimina nombre, razón social, teléfono, correo y web **antes** de escribir a disco (excepción documentada a "Bronce = crudo").
+- Nada de credenciales en el código. Las fuentes actuales no usan token. Si alguna lo necesitara: `.env` (en `.gitignore`) o GitHub Secrets.
 
-## Pregunta y fuentes (propuesta inicial, pendiente de validar)
+## Decisiones ya tomadas (no volver a preguntarlas)
 
-Pregunta detonadora tentativa: *"¿Cómo evoluciona la demanda de atención psicológica en [ciudad/región] y dónde hay huecos de oferta?"*
+| Tema | Decisión | Dónde está justificada |
+|---|---|---|
+| Fuentes | Solo **INEGI oficial y sin token**: DENUE (consultorios, SCIAN 621331/621332), Defunciones registradas (serie mensual), Censo 2020 ITER y Marco Geoestadístico 2020. Google Trends se **descartó** | `docs/E0/propuesta.md`, `README.md` |
+| Pronóstico (E1) | Ganó ARIMA(0,0,0), que equivale a la media histórica. Se presenta como hallazgo (la serie es ruido), no como fracaso | `docs/E1/pronostico.md` |
+| Unidad de E3 | 65 localidades ≥ 500 hab., no municipios (con n = 10 no alcanza para el MANOVA) | `docs/E3/multivariado.md` |
+| Licencia de Oro | CC BY 4.0 | `data/oro/LICENCIA.md`, `docs/E3/datasheet.md` |
+| Puerta de calidad | Pandera; los registros inválidos van a `data/cuarentena/` con motivo, nunca se borran en silencio | `src/plata.py` |
+| Auditoría cruzada de E2 | **No se hizo**: no se asignó equipo auditor ni hubo reporte. Se sustituye con una **auditoría interna** (ISO/IEC 25010 y 25012) que hace Luis; se cierra en `docs/E3/cierre-auditoria.md` | — |
 
-Fuentes candidatas (verificar disponibilidad, granularidad para la región, robots.txt y términos de uso ANTES de comprometerse):
-- **DENUE (INEGI)**: consultorios de psicología registrados, con ubicación → sirve también como fuente geoespacial de E2.
-- **Google Trends**: búsquedas tipo "psicólogo", "ansiedad", "terapia" por región → serie mensual con ≥36 periodos (requisito E0).
-- **INEGI / Secretaría de Salud / datos.gob.mx**: encuestas y estadísticas de salud mental.
+## Entregas
 
-Las 3 preguntas analíticas (E0) deben mapear a:
-- E1 → variable a **pronosticar** (ej. índice mensual de búsqueda).
-- E2 → **factores a experimentar** (ej. temporada, región, tipo de servicio).
-- E3 → **grupos multivariados a comparar** (ej. municipios por oferta vs. demanda).
+| Entrega | Tag | Estado (26-nov) |
+|---|---|---|
+| E0 | `e0` | Todo hecho excepto la entrevista (sección 2 de `docs/E0/propuesta.md`). **Aún no hay tag** |
+| E1 | `e1` | Entregada |
+| E2 | `e2` | Entregada |
+| E3 | `e3` | **Lunes 30 de noviembre de 2026.** Ficha con lo pendiente (⏳) en `docs/E3/ENTREGA.md` (rama `calidad-e3` hasta que se haga merge) |
+| Demo Day | — | Miércoles 2 de diciembre |
+| E4 | `e4` | Viernes 4 de diciembre (reporte final) |
 
-## Stack
+Pendientes principales de E3: cierre de auditoría, retrospectiva PSP (necesita el PSP de Luis), relatoría E3, publicar el tablero y confirmar que el dataset sea público.
 
-- Python (pandas, requests; Pandera o Great Expectations para la puerta de calidad; GeoPandas para lo geoespacial).
-- GitHub Actions para ejecutar la extracción automáticamente (capa Bronce).
-- Notebooks o scripts en `src/` según pida cada entrega.
+## Registro PSP (`calidad/`)
 
-Si vas a instalar dependencias, explica qué hace cada una y por qué sobre alternativas. Usa un `requirements.txt` con versiones fijadas.
+- Cada integrante llena **solo su propio** `tiempo-<nombre>.csv` y `defectos-<nombre>.csv` (formato en `calidad/README.md`).
+- **Nunca inventes horas, fechas ni defectos.** Lo reconstruido de memoria se marca como *estimado* en comentarios; lo que no se recuerda se deja como no recordado.
+- La fase debe coincidir con la evidencia de git: si alguien investigó o planeó algo que otro programó, es Planeación o Diseño, no Código.
+- Lo nuevo se registra en el momento, con hora real de inicio y fin.
 
-## Estructura esperada
+## Stack y entorno
+
+- Python 3.12 con versiones **fijadas** en `requirements*.txt` (pandas 2.2.3, Pandera, GeoPandas, statsmodels, Streamlit). Usa un entorno virtual: con pandas 3.x el pipeline falla localmente aunque en la CI pase.
+- Si instalas o cambias dependencias, explica qué hace cada una y por qué sobre las alternativas.
+- Comandos de uso diario: `COMO-EJECUTAR.md`.
+
+## Automatización (GitHub Actions)
+
+- `extraccion-bronce.yml` (**Pipeline Bronce-Plata-Oro**): todos los días a las 13:00 UTC (07:00 de Colima). Cada corrida, exitosa o fallida, agrega una fila a `data/bitacora/capturas.csv` (evidencia de disponibilidad, MTBF y MTTR).
+- `ci.yml`: ruff, pytest con cobertura ≥ 60 %, pip-audit y gitleaks en cada push.
+- El robot hace commits en `main` todos los días: **siempre `git pull` antes de un merge**.
+- Para volver a correr el pipeline usa **"Run workflow"**, no "Re-run jobs" (que repite un commit viejo y choca al hacer push).
+- 25-nov: el INEGI cambió los encabezados del DENUE a mayúsculas; se corrigió en el commit 914774e (`normalizar_columnas` en `src/extraer_denue.py`).
+
+## Estructura
 
 ```
-docs/
-  rubrica/              ← los ContextoEscuela*.txt del maestro
-  E0/propuesta.md       ← 3 a 5 páginas
-  E0/ENTREGA.md
-  E1/ENTREGA.md, E1/limpieza.ipynb (o scripts en src/)
-  E2/ENTREGA.md
-  etica-datos.md        ← E2
-  relatoria-E1.md, relatoria-E2.md
-calidad/
-  tiempo-<nombre>.csv   ← uno por integrante (PSP)
-  defectos-<nombre>.csv
-src/                    ← extractores y pipelines
-data/bronce/            ← datos crudos tal cual se descargan (no se modifican)
-data/plata/             ← limpios y validados
-data/oro/               ← listos para análisis, con linaje hacia bronce
-data/cuarentena/        ← registros inválidos con motivo (nunca borrar en silencio)
-.github/workflows/      ← extracción automática
+docs/rubrica/            ContextoEscuela0-3.txt (solo Ing. de Datos)
+docs/E0..E3/             ENTREGA.md de cada etapa + documentos de análisis
+docs/relatoria-EX.md     relatoría de cada etapa (formato de 6 preguntas)
+docs/plan-sqa.md         plan de calidad: roles, revisiones, lista antes del tag
+calidad/                 PSP por integrante
+src/                     extractores, plata.py, oro.py, análisis
+tablero/app.py           tablero Streamlit
+tests/                   pytest (incluye reproducibilidad Bronce -> Oro)
+data/bronce/             crudo tal cual se descarga (no se modifica a mano)
+data/plata/, data/oro/   limpio y listo para análisis, con linaje a Bronce
+data/cuarentena/         registros inválidos con motivo
+data/bitacora/           una fila por corrida del pipeline
 ```
 
-## Entregas y estado
+## Flujo de git
 
-- **E0** (tag `e0`): fecha oficial era el lunes 9 de noviembre de 2026; **ya está atrasada**. Prioridad máxima.
-- **E1** (tag `e1`) y **E2** (tag `e2`): ver rúbricas.
+1. Rama nueva a partir de `main` actualizado.
+2. Commits cortos, **sin la línea "Co-Authored-By"**.
+3. Push y esperar la CI en verde.
+4. `git merge --ff-only` a `main` y push. **Solo Gael** hace los merge a `main` y crea los tags.
 
-## Datos que aún NO sabes (pregúntaselos al usuario, no inventes)
-
-- Ciudad/región exacta del observatorio.
-- Nombres de los integrantes del equipo (o si es individual), para los archivos de `calidad/`.
-- Si la entrevista con la psicóloga ya se hizo y qué respondió.
-- Fechas límite de E1 y E2.
-- Si la extensión o entrega tardía de E0 está permitida.
+No borres archivos sin confirmar.
 
 ## Cómo comportarte
 
 - Sé directo. Si algo no cumple la rúbrica, dilo.
-- Si no estás seguro de algo (ej. si una fuente tiene datos suficientes), dilo y propón cómo verificarlo.
-- El usuario es nivel intermedio: explica decisiones no triviales (por qué IQR vs Z-Score, por qué cierto mecanismo de faltantes), no lo obvio.
+- Si no estás seguro de algo, dilo y propón cómo verificarlo. No inventes resultados, hallazgos ni registros.
+- El usuario es de nivel intermedio: explica las decisiones no triviales, no lo obvio.
 - Comentarios y documentación en español.
 - Trabajo por etapas: termina y verifica una entrega antes de pasar a la siguiente.
-- Commits cortos, sin línea "Co-Authored-By". Sugiere commit tras cada cambio significativo.
-- No borres archivos sin confirmar.
