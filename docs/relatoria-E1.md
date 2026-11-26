@@ -43,7 +43,7 @@ Automatizar el paso de los datos crudos (Bronce) a datos limpios y validados (Pl
 | Integrante | Actividades |
 |---|---|
 | Gael Alexandro Cortez Sarmienta | _completar_ |
-| Luis Alejandro Mendoza Peñaloza | _completar_ |
+| Luis Alejandro Mendoza Peñaloza | El 12-nov participó en la lluvia de ideas del proyecto y propuso inicialmente un mapa agrícola; el equipo después eligió el observatorio del sector de servicios psicológicos. Investigó fuentes oficiales y propuso INEGI como fuente. Fue trabajo de planeación e investigación; no se le atribuye código subido al repositorio en E1. El tiempo es estimado y los datos no recordados quedan sin cuantificar en `calidad/tiempo-luis-mendoza.csv`. |
 
 ## 7. Aprendizajes y siguiente etapa
 

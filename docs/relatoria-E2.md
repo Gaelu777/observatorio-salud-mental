@@ -20,9 +20,10 @@
 | 2026-11-23 | Captura diaria del DENUE y bitácora de ejecuciones (una fila por corrida, exitosa o fallida) | Gael | `.github/workflows/extraccion-bronce.yml`, `data/bitacora/capturas.csv` |
 | 2026-11-23 | Experimento factorial 2³ (24 corridas), diseño 2 × 3 (18 corridas), matrices 2⁴ y 2⁴⁻¹, y confirmación (5 corridas) | Gael | `src/experimento_factorial.py`, `docs/E2/experimento.md` |
 | 2026-11-23 | Evaluación ISO/IEC 25010 y 25012 | Gael | `docs/E2/evaluacion-iso.md` |
-| _completar_ | _Actividades de Luis_ | Luis | _completar_ |
+| Desde 2026-11-18; aprox. 3 días (fin no recordado) | Revisó los criterios de la rúbrica y diseñó qué datos serían necesarios para el observatorio | Luis | Actividad recordada; duración aproximada no disponible. Registro en `calidad/tiempo-luis-mendoza.csv` |
+| 2026-11-20 | Inició trabajo de código del proyecto en ratos libres | Luis y Gael | Según recuerdo de Luis; el repositorio se creó el 2026-11-23. No se atribuyen archivos ni commits concretos a Luis. |
 
-Horas por actividad: `calidad/tiempo-gael-cortez.csv`.
+Horas por actividad: `calidad/tiempo-gael-cortez.csv` y `calidad/tiempo-luis-mendoza.csv`; los campos no recordados quedan vacíos.
 
 ## 3. Qué decidimos y por qué
 
@@ -61,7 +62,11 @@ Medir solo el tiempo habría recomendado una configuración que borra los datos;
 - Calificar con métricas nos obligó a admitir lo que falta. En la 25012, completitud, trazabilidad y confidencialidad están al 100 %, pero comprensibilidad (no hay diccionario de Oro) y accesibilidad (no hay tablero) no cumplen.
 - En la 25010, la fiabilidad todavía no se puede medir: la bitácora empezó hoy.
 
-## 6. Evidencias
+## 6. Distribución del trabajo y evidencias
+
+| Integrante | Actividades |
+|---|---|
+| Luis Alejandro Mendoza Peñaloza | Desde el 18-nov, revisó criterios de la rúbrica y diseñó los datos necesarios para el observatorio (aprox. 3 días; fin no recordado). El 20-nov inició trabajo de código en ratos libres, según su recuerdo; no se atribuyen archivos ni commits concretos a Luis. El tiempo no recordado queda sin cuantificar en `calidad/tiempo-luis-mendoza.csv`. |
 
 - Commits: `88037d9` (geoespacial, linaje y ética), `6d30205` (captura diaria y bitácora), `f85eef5` (experimento factorial), `16adb5c` (evaluación ISO).
 - Mapas: `docs/E2/mapa_oferta_necesidad.png`, `docs/E2/mapa_centro_colima.png`.

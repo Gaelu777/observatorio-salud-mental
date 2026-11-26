@@ -26,13 +26,14 @@ Este plan cubre los dos.
 | Rol | Persona | Responsabilidades |
 |---|---|---|
 | Desarrollo de captura y pipeline | Gael Alexandro Cortez Sarmienta | Extractores, Plata/Oro, workflows |
-| Análisis estadístico y tablero | Luis Alejandro Mendoza Peñaloza | Pronóstico, experimento, multivariado, tablero |
-| **Revisor SQA** | **Rotativo: revisa quien NO escribió el cambio** | Revisa el pull request o commit contra la lista de la sección 5 antes del tag |
-| Auditor externo | Equipo asignado en la auditoría cruzada (E2) | Auditoría con ISO 25010/25012; sus hallazgos entran al registro de la sección 7 |
+| Planeación, investigación y diseño (E0–E2) | Luis Alejandro Mendoza Peñaloza | Lluvia de ideas, investigación de fuentes oficiales y diseño de los datos necesarios |
+| **Revisor SQA (E3)** | **Luis Alejandro Mendoza Peñaloza** | Revisa los cambios de Gael contra la lista de la sección 5 antes del tag |
+| **Auditor interno (E3)** | **Luis Alejandro Mendoza Peñaloza** | Evalúa el observatorio con ISO/IEC 25010 y 25012; documenta hallazgos en `docs/E3/auditoria-interna.md` |
+| Auditoría cruzada (E2) | No realizada: no se asignó otro equipo ni se recibió reporte | Se sustituye en E3 por la auditoría interna |
 
 **Independencia del revisor:** con 2 integrantes no hay un área de calidad separada. La independencia se logra con la regla *nadie aprueba su propio trabajo*: el revisor siempre es el otro integrante, y la CI hace una revisión automática que no depende de ninguno de los dos.
 
-> ⚠️ Esta tabla de roles es una **propuesta**. El equipo debe confirmarla o corregirla según cómo se repartió el trabajo en realidad (ver la sección 6 de las relatorías).
+> Roles actualizados según la distribución de trabajo reportada por Luis y las responsabilidades de E3.
 
 ## 3. Estándares y métricas
 
