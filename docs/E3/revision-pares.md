@@ -1,6 +1,6 @@
 # Revisión entre pares — E3
 
-**Revisor:** Integrante SQA designado en el plan
+**Revisor:** Luis Alejandro Mendoza Peñaloza (revisor SQA de E3, `docs/plan-sqa.md` §2)
 **Fecha:** 2026-11-26
 **Veredicto:** **Aprobado con cambios**
 

@@ -15,7 +15,7 @@ Se inspeccionaron el código, los archivos de datos, la bitácora, la documentac
 | **No cumple** | La evidencia confirma una brecha frente al criterio. |
 | **Sin medición** | No existe información suficiente para calcular el resultado. |
 
-El plan define la severidad crítica en la sección 6; la sección 7 enumera herramientas. Por ello, las severidades se asignan con la regla crítica y el ejemplo de mayor de la sección 6. No se encontró evidencia para clasificar un hallazgo como crítico.
+Las severidades (crítico, mayor o menor) se asignan con la regla de severidad y el ejemplo de defecto mayor de `docs/plan-sqa.md` §6. No se encontró evidencia para clasificar un hallazgo como crítico.
 
 ## 1. ISO/IEC 25012 — calidad de los datos Oro
 
