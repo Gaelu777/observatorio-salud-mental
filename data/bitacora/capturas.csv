@@ -5,3 +5,4 @@ run_id,intento,evento,tipo,inicio_utc,fin_utc,duracion_seg,estado
 45769523353,1,workflow_dispatch,completa,2026-11-26T06:37:58Z,2026-11-26T06:39:23Z,85,success
 45901935002,1,schedule,diaria,2026-11-26T22:00:36Z,2026-11-26T22:01:32Z,56,success
 46072213418,1,schedule,diaria,2026-11-27T21:44:20Z,2026-11-27T21:45:00Z,40,success
+46187526968,1,schedule,diaria,2026-11-28T20:39:22Z,2026-11-28T20:40:10Z,48,success
